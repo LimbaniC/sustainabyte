@@ -3,7 +3,7 @@ Nourishing Communities, One bite at a Time
 
 Project Name - Sustain-a-byte
 
-Team Name - Team 23
+Team Name - Team 12
 
 Team Members - Limbani Chaponda (LimbaniC), Grace Schmelzer (gschmelzer), Jacob Cohen (Tapugy)
 
