@@ -7,7 +7,8 @@
 **Team Members:**  
 - **Limbani Chaponda** (LimbaniC)  
 - **Grace Schmelzer** (gschmelzer)  
-- **Jacob Cohen** (Tapugy)  
+- **Jacob Cohen** (Tapugy)
+- **Nasra Hasan** (NasMelody) 
 
 ---
 
