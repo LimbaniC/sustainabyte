@@ -4,17 +4,12 @@
 import './App.css'
 import FoodComponent from '../frontend/components/FoodComponent/FoodComponent.tsx';
 import FOOD_DATA from '../backend/DATA/FoodData.tsx';
+import {Navbar} from '../frontend/components/Navbar/Navbar.tsx';
 
 function App() {
   return (
-    <>
-      <div>
-        <FoodComponent {...FOOD_DATA[0]} />
-        <FoodComponent {...FOOD_DATA[1]} />
-        <FoodComponent {...FOOD_DATA[2]} />
-        <FoodComponent {...FOOD_DATA[3]} />
-      </div> 
-    </>
+    
+      <Navbar Anchors={[{ name: "Home", ref: "https://www.merriam-webster.com/dictionary/test" }, { name: "About", ref: "https://www.merriam-webster.com/dictionary/testing" }]}></Navbar>
   )
 }
 
