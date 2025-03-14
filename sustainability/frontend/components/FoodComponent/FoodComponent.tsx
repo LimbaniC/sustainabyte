@@ -21,7 +21,9 @@ export type FoodData = {
   foodCategory: string, 
   foodExpirationDate: Date, 
   foodDescription: string, 
-  foodAllergen: string
+  foodAllergen: string,
+  foodValue: number, /*added for purpose of saved component might need to be reorganised 
+  we need to make a decision on if we want to make global types or keep them local - Jacob*/
 }
 
 
