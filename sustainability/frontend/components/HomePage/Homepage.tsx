@@ -1,6 +1,6 @@
 import React, {useState} from "react"; 
 import { Link } from "react-router-dom";
-import ".Homepage.css";
+import "./Homepage.css";
 //created homepage 
 
 

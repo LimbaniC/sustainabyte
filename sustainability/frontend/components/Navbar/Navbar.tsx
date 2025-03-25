@@ -20,7 +20,7 @@ const Navbar: React.FC = () => {
       {/* ✅ Navigation Menu (Now Includes Login) */}
       <div className={`menu ${isOpen ? "active" : ""}`}>
         <ul>
-          <li className="nav-item"><Link to="/">Saved</Link></li>
+          <li className="nav-item"><Link to="/saved">Saved</Link></li>
           <li className="nav-item"><Link to="/donate">Donate</Link></li>
           <li className="nav-item"><Link to="/search">Search</Link></li>
           <li className="nav-item login">
