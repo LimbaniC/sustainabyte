@@ -1,20 +1,41 @@
 import React from 'react';
-// import { useState } from "react";
+ import { useState } from "react";
 import "./Signup.css";
 
 
-const Signup = () => {
+const Signup: React.FC = () => {
 
-    const handleSubmit = (e: string) => {
-        //implement this with backend 
-        console.log(e); 
+   const [formData, setFormData] = useState({
+        username: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
+    
+      const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleChange = (e: string) => { 
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => { 
         //implement this with backend 
-        console.log(e); 
+        e.preventDefault(); 
+           // Validate inputs
+    const validationErrors: { [key: string]: string } = {};
 
+    if (!formData.username.trim()) validationErrors.username = "Username is required";
+    if (!formData.email.includes("@")) validationErrors.email = "Valid email is required";
+    if (formData.password.length < 6) validationErrors.password = "Password must be at least 6 characters";
+    if (formData.password !== formData.confirmPassword)
+      validationErrors.confirmPassword = "Passwords do not match";
+
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length === 0) {
+      console.log("Form Submitted:", formData);
+      // Call backend API here
+    }
     }
     
 
@@ -27,7 +48,7 @@ const Signup = () => {
     
     //   const [errors, setErrors] = useState({});
 
-    const dummy = "";
+   // const dummy = "";
 
 
       return (
@@ -40,10 +61,12 @@ const Signup = () => {
                 type="text"
                 name="username"
                 //change value below in backend w/ state managment
-                value={dummy}
+                value={formData.username}
                 onChange={handleChange}
-                className="form-input"
-              />
+                className={`form-input ${errors.username ? "input-error" : ""}`}
+              /> 
+            {errors.username && <p className="error-text">{errors.username}</p>}
+
             </div>
     
             <div className="form-group">
@@ -52,10 +75,11 @@ const Signup = () => {
                 type="email"
                 name="email"
                 //change value below in backend w/ state management
-                value={dummy}
+                value={formData.email}
                 onChange={handleChange}
-                className="form-input"
-              />
+                className={`form-input ${errors.email ? "input-error" : ""}`}
+                />
+              {errors.email && <p className="error-text">{errors.email}</p>}
             </div>
     
             <div className="form-group">
@@ -64,10 +88,11 @@ const Signup = () => {
                 type="password"
                 name="password"
                 //change value below in backend w/ state management
-                value={dummy}
+                value={formData.password}
                 onChange={handleChange}
-                className="form-input"
-              />
+                className={`form-input ${errors.password ? "input-error" : ""}`}
+                />
+              {errors.password && <p className="error-text">{errors.password}</p>}
             </div>
     
             <div className="form-group">
@@ -76,10 +101,11 @@ const Signup = () => {
                 type="password"
                 name="confirmPassword"
                 //change value below in backend w/ state managment 
-                value={dummy}
+                value={formData.confirmPassword}
                 onChange={handleChange}
-                className="form-input"
-              />
+                className={`form-input ${errors.confirmPassword ? "input-error" : ""}`}
+                /> 
+              {errors.confirmPassword && <p className="error-text">{errors.confirmPassword}</p>}
             </div>
     
             <button type="submit" className="submit-button">
