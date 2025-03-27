@@ -8,9 +8,14 @@ import './App.css'
 import Navbar from '../frontend/components/Navbar/Navbar.tsx'; 
 import Home from '../frontend/components/Homepage/Homepage.tsx';
 import Login from '../frontend/components/Authentication/Login/Login.tsx';
-import Signup from '../frontend/components/Authentication/Signup/Signup.tsx'
+import Signup from '../frontend/components/Authentication/Signup/Signup.tsx';
+import ContextWrapper from '../frontend/components/WrapperComponent/ContextWrapper.tsx';
+
+
 function App() {
   return (
+
+  <ContextWrapper>
     <Router> 
     <Navbar />
 
@@ -21,6 +26,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
       </Routes>
     </Router> 
+    </ContextWrapper>
 
   );
  

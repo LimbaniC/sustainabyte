@@ -15,7 +15,7 @@ export type FoodSP = {
   distanceAway: number;
 }
 
-export type FoodData = { 
+export type FoodType = { 
   foodName: string,
   foodAmount: number,
   foodCategory: string, 
