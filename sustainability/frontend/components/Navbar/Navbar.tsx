@@ -1,28 +1,36 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./Navbar.css"; 
+import "./Navbar.css";
 
-const Navbar: React.FC = () => {
+export type NavAnchor = {
+  name: string;
+  ref: string;
+};
+
+export function Navbar({ Anchors }: { Anchors: NavAnchor[] }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <nav className="navbar">
-      {/* ✅ Clickable Logo (Left) */}
+      
       <Link to="/" className="navbar-brand">
         <img src="/unnamed.png" alt="SUSTAIN-A-BITE Logo" className="logo" />
       </Link>
 
-      {/* ✅ Hamburger Menu Toggle (Only for Mobile) */}
+      
       <button onClick={() => setIsOpen(!isOpen)} className="menu-icon md:hidden">
         ☰
       </button>
 
-      {/* ✅ Navigation Menu (Now Includes Login) */}
+      
       <div className={`menu ${isOpen ? "active" : ""}`}>
         <ul>
-          <li className="nav-item"><Link to="/saved">Saved</Link></li>
-          <li className="nav-item"><Link to="/donate">Donate</Link></li>
-          <li className="nav-item"><Link to="/search">Search</Link></li>
+          {Anchors.map((anchor, index) => (
+            <li key={index} className="nav-item">
+              <Link to={anchor.ref}>{anchor.name}</Link>
+            </li>
+          ))}
+          
           <li className="nav-item login">
             <Link to="/login">Login</Link>
           </li>
@@ -30,6 +38,4 @@ const Navbar: React.FC = () => {
       </div>
     </nav>
   );
-};
-
-export default Navbar;
+}
