@@ -1,7 +1,6 @@
 import React, {useState} from "react"; 
 import { Link } from "react-router-dom";
 import "./Homepage.css";
-//created homepage 
 
 
 const teamMembers = [
@@ -31,7 +30,6 @@ const Home: React.FC = () => {
     message: "",
   });
 
-  // ✅ Handles Input Changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }; 
