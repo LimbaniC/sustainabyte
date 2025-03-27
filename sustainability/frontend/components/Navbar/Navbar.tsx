@@ -7,17 +7,12 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="navbar">
-      {/* ✅ Clickable Logo (Left) */}
       <Link to="/" className="navbar-brand">
         <img src="/unnamed.png" alt="SUSTAIN-A-BITE Logo" className="logo" />
       </Link>
-
-      {/* ✅ Hamburger Menu Toggle (Only for Mobile) */}
       <button onClick={() => setIsOpen(!isOpen)} className="menu-icon md:hidden">
         ☰
       </button>
-
-      {/* ✅ Navigation Menu (Now Includes Login) */}
       <div className={`menu ${isOpen ? "active" : ""}`}>
         <ul>
           <li className="nav-item"><Link to="/saved">Saved</Link></li>

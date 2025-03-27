@@ -26,10 +26,10 @@
     align-items: center;
     text-align: center;
     z-index: 1; 
-    justify-content: flex-start; /* Moves content to the left */
-    padding-left: 10%; /* Adjust spacing from the left */
-    color: white; /* Ensures text is readable */
-    text-align: left; /* Aligns text content */ 
+    justify-content: flex-start; 
+    padding-left: 10%; 
+    color: white; 
+    text-align: left; 
   } 
 
   .hero::before {
@@ -108,38 +108,34 @@
   .about-container {
     display: flex;
     align-items: center;
-    justify-content: center; /* Centers the section */
-    max-width: 90%; /* Adjusts section width */
+    justify-content: center; 
+    max-width: 90%; 
     margin: 2rem;
-    gap: 60px; /* Increased space between text and image */
+    gap: 60px; 
   }
   
-  /* ✅ Moves text to the left, adds indentation */
+
   .about-text {
     flex: 1;
-    max-width: 600px; /* Adjust text width */
-    padding-left: 30px; /* Indents entire text block */
+    max-width: 600px;
+    padding-left: 30px; 
   } 
 
- 
-  
-  /* ✅ Indents first line of each paragraph */
   .about-text p {
     font-size: 18px;
     color: #ddd;
     line-height: 1.6;
-    text-indent: 30px; /* Moves the first line of each paragraph */
+    text-indent: 30px; 
   }
   
-  /* ✅ Moves image further right */
   .about-image {
     flex: 1;
     display: flex;
-    justify-content: flex-end; /* Pushes image to the right */
+    justify-content: flex-end; 
   }
   
   .about-image img {
-    max-width: 800px; /* Increase image size */
+    max-width: 800px; 
     height: auto;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
@@ -178,7 +174,7 @@
   }
   
   .team-item:hover {
-    transform: scale(1.05); /* Slight zoom effect on hover */
+    transform: scale(1.05); 
   }
   
   .team-item h3 {
@@ -243,14 +239,14 @@
   background-color: green;
 }
   footer {
-    margin-top: auto; /* Push footer to the bottom */
+    margin-top: auto; 
     background-color: #333;
     color: white;
     text-align: center;
     padding: 1rem;
     font-size: 14px;
-    width: 100%; /* Ensure footer spans full width */
-    position: relative; /* Ensure it stays at the bottom */
+    width: 100%; 
+    position: relative; 
   }
   
   footer a {
