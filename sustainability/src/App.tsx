@@ -10,12 +10,14 @@ import Home from '../frontend/components/Homepage/Homepage.tsx';
 import Login from '../frontend/components/Authentication/Login/Login.tsx';
 import Signup from '../frontend/components/Authentication/Signup/Signup.tsx';
 import ContextWrapper from '../frontend/components/WrapperComponent/ContextWrapper.tsx';
+import DonationForm from '../frontend/components/DonationForm/DonationForm.tsx';
 
 
 function App() {
   return (
 
   <ContextWrapper>
+    <DonationForm/>
     <Router> 
     <Navbar Anchors={[{name:"Saved",ref:'/saved'},{name:"Donate",ref:'/donate'},{name:"Search",ref:"/search"}]} />
 
@@ -24,6 +26,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+   
       </Routes>
     </Router> 
     </ContextWrapper>

@@ -1,11 +1,25 @@
 import React from 'react'
 import { createContext, useState } from 'react';
+import { useContext } from 'react';
+import { FoodType } from '../FoodComponent/FoodComponent';
+import { ReactNode } from 'react';
 
-const AppContext = createContext({}); 
+interface AppContextType {
+    food: FoodType, 
+    updateFood: (updates: Partial<FoodType>) => void;
+}
 
-const ContextWrapper = ({children}) => {
+export const AppContext = createContext<AppContextType | undefined >(undefined); 
 
-  const [food, setFood] = useState({
+export const useAppContext = () => { 
+
+    const context = useContext(AppContext);
+    return context; 
+}
+
+const ContextWrapper = ({children}: {children: ReactNode}) => {
+
+  const [food, setFood] = useState<FoodType>({
     foodName: "",
     foodAmount: 0,
     foodCategory: "",
@@ -20,7 +34,6 @@ const ContextWrapper = ({children}) => {
         ...updates, 
     }));
   };
-
 
 
   return (

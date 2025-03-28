@@ -16,12 +16,13 @@ export type FoodSP = {
 }
 
 export type FoodType = { 
-  foodName: string,
-  foodAmount: number,
-  foodCategory: string, 
-  foodExpirationDate: Date, 
-  foodDescription: string, 
-  foodAllergen: string
+      foodName: string,
+      foodAmount: number,
+      foodCategory: string, 
+      foodExpirationDate: Date, 
+      foodDescription: string, 
+      foodAllergen: string
+
 }
 
 
