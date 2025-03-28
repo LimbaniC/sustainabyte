@@ -17,7 +17,6 @@ function App() {
   return (
 
   <ContextWrapper>
-    <DonationForm/>
     <Router> 
     <Navbar Anchors={[{name:"Saved",ref:'/saved'},{name:"Donate",ref:'/donate'},{name:"Search",ref:"/search"}]} />
 
@@ -26,6 +25,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/donate" element={<DonationForm />} />
    
       </Routes>
     </Router> 
