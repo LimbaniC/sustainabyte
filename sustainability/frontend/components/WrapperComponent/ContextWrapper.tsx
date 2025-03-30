@@ -1,11 +1,31 @@
 import React from 'react'
 import { createContext, useState } from 'react';
+import { useContext } from 'react';
+import { FoodType } from '../FoodComponent/FoodComponent';
+import { ReactNode } from 'react';
 
-const AppContext = createContext({}); 
+interface AppContextType {
+    food: FoodType, 
+    updateFood: (updates: Partial<FoodType>) => void;
+}
 
-const ContextWrapper = ({children}) => {
+export const AppContext = createContext<AppContextType | undefined >(undefined); 
 
-  const [food, setFood] = useState({
+export const useAppContext = () => { 
+
+    const context = useContext(AppContext);
+
+    if (!context){
+        throw new Error("useAppContext must be used within a ContextWrapper");
+    }
+
+    return context; 
+}
+
+const ContextWrapper = ({children}: {children: ReactNode}) => {
+
+  const [food, setFood] = useState<FoodType>({
+    id: 0,
     foodName: "",
     foodAmount: 0,
     foodCategory: "",
@@ -14,13 +34,14 @@ const ContextWrapper = ({children}) => {
     foodAllergen: ""
   })
 
+
   const updateFood = (updates: Partial<typeof food>) => { 
     setFood(prev => ({
         ...prev,
         ...updates, 
     }));
-  };
 
+  };
 
 
   return (
