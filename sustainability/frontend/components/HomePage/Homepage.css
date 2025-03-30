@@ -28,7 +28,11 @@
     z-index: 1; 
     justify-content: flex-start; 
     padding-left: 10%; 
+<<<<<<< HEAD
     color: white; 
+=======
+    color: white;
+>>>>>>> origin/main
     text-align: left; 
   } 
 
@@ -114,20 +118,33 @@
     gap: 60px; 
   }
   
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> origin/main
   .about-text {
     flex: 1;
     max-width: 600px;
     padding-left: 30px; 
   } 
 
+<<<<<<< HEAD
+=======
+ 
+  
+>>>>>>> origin/main
   .about-text p {
     font-size: 18px;
     color: #ddd;
     line-height: 1.6;
     text-indent: 30px; 
   }
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> origin/main
   .about-image {
     flex: 1;
     display: flex;
@@ -245,7 +262,11 @@
     text-align: center;
     padding: 1rem;
     font-size: 14px;
+<<<<<<< HEAD
     width: 100%; 
+=======
+    width: 100%;
+>>>>>>> origin/main
     position: relative; 
   }
   
