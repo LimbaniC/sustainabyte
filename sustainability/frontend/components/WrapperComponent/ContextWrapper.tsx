@@ -6,7 +6,9 @@ import { ReactNode } from 'react';
 
 interface AppContextType {
     food: FoodType, 
+    foodList: FoodType[],
     updateFood: (updates: Partial<FoodType>) => void;
+    addToFoodList: (food: FoodType) => void;
 }
 
 export const AppContext = createContext<AppContextType | undefined >(undefined); 
@@ -34,6 +36,12 @@ const ContextWrapper = ({children}: {children: ReactNode}) => {
     foodAllergen: ""
   })
 
+ const [foodList, setFoodList] = useState<FoodType[]>([]);
+
+ const addToFoodList = (food: FoodType) => { 
+    setFoodList([...foodList, food]);
+ };
+
 
   const updateFood = (updates: Partial<typeof food>) => { 
     setFood(prev => ({
@@ -45,7 +53,7 @@ const ContextWrapper = ({children}: {children: ReactNode}) => {
 
 
   return (
-    <AppContext.Provider value={{food, updateFood}}>
+    <AppContext.Provider value={{food, foodList, updateFood, addToFoodList}}>
         {children}
     </AppContext.Provider>
   )
