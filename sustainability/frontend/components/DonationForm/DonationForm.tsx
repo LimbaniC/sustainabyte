@@ -5,7 +5,7 @@ import './DonationForm.css';
 
 const DonationForm = () => {
 
- const { food, updateFood }  = useAppContext(); 
+ const { food, updateFood, addToFoodList}  = useAppContext(); 
 
   return (
     <div className="outer">
@@ -23,6 +23,7 @@ const DonationForm = () => {
 
             const newFood = {id, foodName, foodAmount, foodCategory, foodExpirationDate, foodDescription, foodAllergen};
             updateFood(newFood);
+            addToFoodList(newFood);
 
         }}>
             <input type="text" name="foodName" placeholder="Food Name" required />
