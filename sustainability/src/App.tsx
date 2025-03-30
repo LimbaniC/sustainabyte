@@ -10,7 +10,7 @@ import Home from '../frontend/components/Homepage/Homepage.tsx';
 import Login from '../frontend/components/Authentication/Login/Login.tsx';
 import Signup from '../frontend/components/Authentication/Signup/Signup.tsx';
 import ContextWrapper from '../frontend/components/WrapperComponent/ContextWrapper.tsx';
-import SearchBar from "../frontend/components/SearchPage/SearchBar/SearchBar.tsx";
+import SearchMain from "../frontend/components/SearchPage/SearchMain/SearchMain.tsx";
 import DonationForm from '../frontend/components/DonationForm/DonationForm.tsx';
 
 
@@ -26,7 +26,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/search" element={<SearchBar />}/>
+        <Route path="/search" element={<SearchMain />}/>
         <Route path="/donate" element={<DonationForm />} />
    
       </Routes>
