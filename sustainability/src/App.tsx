@@ -12,7 +12,7 @@ import Signup from '../frontend/components/Authentication/Signup/Signup.tsx';
 import ContextWrapper from '../frontend/components/WrapperComponent/ContextWrapper.tsx';
 import SearchMain from "../frontend/components/SearchPage/SearchMain/SearchMain.tsx";
 import DonationForm from '../frontend/components/DonationForm/DonationForm.tsx';
-import FoodList from "../frontend/components/FoodComponent/FoodList/FoodList.tsx";
+// import FoodList from "../frontend/components/FoodComponent/FoodList/FoodList.tsx";
 
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
 
   <ContextWrapper>
 
-    <FoodList/>
+    {/* <FoodList/> */}
     
     <Router> 
     <Navbar Anchors={[{name:"Saved",ref:'/saved'},{name:"Donate",ref:'/donate'},{name:"Search",ref:"/search"}]} />
