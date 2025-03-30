@@ -27,18 +27,20 @@ export type FoodType = {
 }
 
 
-const FoodComponent = ({foodImage, foodName, distanceAway}: FoodSP) => {
+const FoodComponent: React.FC<{food: FoodType}> = ({food}) => {
     return (
       <div className="food-card">
-      <div className="food-image">
-        <img src={foodImage} alt={foodName} />
+        <div className="food-image">
+
+        </div>
+
+        <div className="food-info">
+          <h3>{food.foodName}</h3>
+          <p>Quantity: {food.foodAmount}</p>
+          <p>Expires: {food.foodExpirationDate.toLocaleDateString()}</p>
+        </div>
+
       </div>
-      <div className="food-info">
-        <span className="bookmark-icon">🔖</span>
-        <p>{distanceAway} minutes away...</p>
-        <span className="walk-icon">🚶‍♂️</span>
-      </div>
-    </div>
 
     );
   };
