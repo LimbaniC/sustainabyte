@@ -19,8 +19,11 @@ const DonationForm = () => {
             const foodExpirationDate = new Date(formData.get('foodExpirationDate') as string);
             const foodDescription = formData.get('foodDescription') as string;
             const foodAllergen = formData.get('foodAllergen') as string;
-            
-            updateFood({foodName, foodAmount, foodCategory, foodExpirationDate, foodDescription, foodAllergen});
+            const id = Date.now();
+
+            const newFood = {id, foodName, foodAmount, foodCategory, foodExpirationDate, foodDescription, foodAllergen};
+            updateFood(newFood);
+
         }}>
             <input type="text" name="foodName" placeholder="Food Name" required />
             <input type="number" name="foodAmount" placeholder="Food Amount" required />

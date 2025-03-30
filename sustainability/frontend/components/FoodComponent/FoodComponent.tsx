@@ -16,6 +16,7 @@ export type FoodSP = {
 }
 
 export type FoodType = { 
+      id: number,
       foodName: string,
       foodAmount: number,
       foodCategory: string, 

@@ -25,6 +25,7 @@ export const useAppContext = () => {
 const ContextWrapper = ({children}: {children: ReactNode}) => {
 
   const [food, setFood] = useState<FoodType>({
+    id: 0,
     foodName: "",
     foodAmount: 0,
     foodCategory: "",
@@ -33,11 +34,13 @@ const ContextWrapper = ({children}: {children: ReactNode}) => {
     foodAllergen: ""
   })
 
+
   const updateFood = (updates: Partial<typeof food>) => { 
     setFood(prev => ({
         ...prev,
         ...updates, 
     }));
+
   };
 
 
