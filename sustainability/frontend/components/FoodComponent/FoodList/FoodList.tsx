@@ -5,15 +5,30 @@ import FoodComponent from "../FoodComponent.tsx";
 
 const FoodList = () => {
 
-  const {foodList} = useAppContext(); 
+  const {foodList, searchTerm, searchFilter} = useAppContext(); 
+  
+  if (!searchTerm || searchTerm.length === 0){ 
+    return (
+      <div className="food-section">
+          {foodList.map((foodObj) => (
+              <FoodComponent key={foodObj.id} food={foodObj}/>  
+          ))}
+      </div>
+    )
+  }
+  else { 
+    const filteredFoodList = searchFilter(foodList);
 
-  return (
-    <div className="food-section">
-        {foodList.map((foodObj) => (
-            <FoodComponent food={foodObj}/>  
+
+    return (
+      <div className="food-section">
+        {filteredFoodList.map((foodObj) => (
+          <FoodComponent key={foodObj.id} food={foodObj} />
         ))}
-    </div>
-  )
+      </div>
+    );
+  
+  }
 }
 
 export default FoodList;
