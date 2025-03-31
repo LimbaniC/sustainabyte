@@ -1,6 +1,7 @@
 import React from 'react';
 import {useAppContext} from "../../WrapperComponent/ContextWrapper.tsx";
 import FoodComponent from "../FoodComponent.tsx";
+import styles from "./FoodList.module.css"
 
 
 const FoodList = () => {
@@ -9,7 +10,7 @@ const FoodList = () => {
   
   if (!searchTerm || searchTerm.length === 0){ 
     return (
-      <div className="food-section">
+      <div className={styles.container}>
           {foodList.map((foodObj) => (
               <FoodComponent key={foodObj.id} food={foodObj}/>  
           ))}
@@ -21,7 +22,7 @@ const FoodList = () => {
 
 
     return (
-      <div className="food-section">
+      <div className={styles.container}>
         {filteredFoodList.map((foodObj) => (
           <FoodComponent key={foodObj.id} food={foodObj} />
         ))}

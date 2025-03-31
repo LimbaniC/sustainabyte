@@ -1,0 +1,26 @@
+.pageContainer {
+    padding: 5rem;  
+    padding-top: 9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    place-items: none !important;
+}
+.searchContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-radius: 25px 25px 25px 25px;
+    width: 70rem;
+}
+.searchContainer > h1 {
+    color: black;
+    font-family: "League Spartan", sans-serif;
+    margin: 0rem;
+    padding: 2rem;
+    padding-bottom: 0rem;
+}
+.foodListContainer {
+    width: 70rem;
+}

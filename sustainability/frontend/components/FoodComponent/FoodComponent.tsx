@@ -1,19 +1,6 @@
 import React from 'react';
 import './FoodComponent.css';
-
-/*
- Input: 
- Food image, 
- Food name,
- Distance away
-
-*/
-
-export type FoodSP = { 
-  foodImage: string;
-  foodName: string;
-  distanceAway: number;
-}
+// import "../../../../src/assets/fonts.css"
 
 export type FoodType = { 
       id: number,
@@ -31,13 +18,14 @@ const FoodComponent: React.FC<{food: FoodType}> = ({food}) => {
     return (
       <div className="food-card">
         <div className="food-image">
-
+          <img src="" alt="" ></img>
         </div>
 
         <div className="food-info">
           <h3>{food.foodName}</h3>
           <p>Quantity: {food.foodAmount}</p>
-          <p>Expires: {food.foodExpirationDate.toLocaleDateString()}</p>
+          <p>Expiration: {food.foodExpirationDate.toLocaleDateString()}</p>
+          <p>Description: {food.foodDescription}</p>
         </div>
 
       </div>

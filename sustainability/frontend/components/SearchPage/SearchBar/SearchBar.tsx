@@ -1,6 +1,8 @@
 import React, { FormEvent } from "react";
-import "./SearchBar.css";
+import styles from "./SearchBar.module.css"
 import { useAppContext } from "../../WrapperComponent/ContextWrapper";
+import "../../../../src/assets/fonts.css";
+
 
 
 const SearchBar = () => {
@@ -26,9 +28,9 @@ const SearchBar = () => {
 
 
 return (
-    <form className="container" onSubmit={handleSearch}>
-        <input className="search-input" name='search-bar-entry' type='search' placeholder="Search here"/>
-        <button className="search-button"></button>
+    <form className={styles.container} onSubmit={handleSearch}>
+        <input className={styles.search_input} name='search-bar-entry' type='search' placeholder="Search here"/>
+        <button className={styles.search_button}>Search</button>
     </form>
     );
 };
