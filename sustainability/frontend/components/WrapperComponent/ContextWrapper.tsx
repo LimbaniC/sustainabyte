@@ -9,6 +9,10 @@ interface AppContextType {
     foodList: FoodType[],
     updateFood: (updates: Partial<FoodType>) => void;
     addToFoodList: (food: FoodType) => void;
+    searchTerm: string,
+    searchFilter: (item: FoodType[]) => FoodType[];
+    setSearch: (e: string) => void
+    //setSearch: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
 export const AppContext = createContext<AppContextType | undefined >(undefined); 
@@ -51,13 +55,32 @@ const ContextWrapper = ({children}: {children: ReactNode}) => {
 
   };
 
+  const [searchTerm, setSearchTerm] = useState(""); 
+
+    // const setSearch = (e: React.FormEvent<HTMLFormElement>) => { 
+    //   const target = e.target as HTMLInputElement;
+    //   setSearchTerm(target.value);
+    // }
+
+    const setSearch = (value: string) => {
+      setSearchTerm(value);
+    }
+
+    const searchFilter = (list: FoodType[]) => { 
+      return list.filter((item) => 
+        item.foodName.toLowerCase().includes(searchTerm.toString().toLowerCase())
+      );
+    }
+  
+
+
 
   return (
-    <AppContext.Provider value={{food, foodList, updateFood, addToFoodList}}>
+    <AppContext.Provider value={{food, foodList, searchTerm, searchFilter, setSearch, updateFood, addToFoodList}}>
         {children}
     </AppContext.Provider>
   )
 
 }
 
-export default ContextWrapper
+export default ContextWrapper;
