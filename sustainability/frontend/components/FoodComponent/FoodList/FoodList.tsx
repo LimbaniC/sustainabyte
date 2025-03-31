@@ -10,7 +10,7 @@ const FoodList = () => {
   
   if (!searchTerm || searchTerm.length === 0){ 
     return (
-      <div className="food-section">
+      <div className={styles.container}>
           {foodList.map((foodObj) => (
               <FoodComponent key={foodObj.id} food={foodObj}/>  
           ))}
