@@ -1,0 +1,46 @@
+/* Card styling */
+.saved-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    margin: 20px auto;
+}
+
+/* List styling */
+.saved-card ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.saved-card li {
+    padding: 5px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Total calories text */
+.saved-card p {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Button styling */
+.saved-button {
+    background-color: #28a745; /* Green color */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.saved-button:hover {
+    background-color: #218838; /* Darker green on hover */
+}

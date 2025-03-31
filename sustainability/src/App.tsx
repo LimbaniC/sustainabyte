@@ -4,7 +4,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css'
 // import FoodComponent from '../frontend/components/FoodComponent/FoodComponent.tsx';
-// import FOOD_DATA from '../backend/DATA/FoodData.tsx';
+ import {FOOD_DATA} from '../backend/DATA/FoodData.tsx';
+ import { FoodType } from "../frontend/components/FoodComponent/FoodComponent.tsx";
 import {Navbar} from '../frontend/components/Navbar/Navbar.tsx'; 
 import Home from '../frontend/components/Homepage/Homepage.tsx';
 import Login from '../frontend/components/Authentication/Login/Login.tsx';
@@ -12,6 +13,7 @@ import Signup from '../frontend/components/Authentication/Signup/Signup.tsx';
 import ContextWrapper from '../frontend/components/WrapperComponent/ContextWrapper.tsx';
 import SearchMain from "../frontend/components/SearchPage/SearchMain/SearchMain.tsx";
 import DonationForm from '../frontend/components/DonationForm/DonationForm.tsx';
+import {Saved} from '../frontend/components/Saved/Saved.tsx'
 // import FoodList from "../frontend/components/FoodComponent/FoodList/FoodList.tsx";
 
 
@@ -32,6 +34,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/search" element={<SearchMain />}/>
         <Route path="/donate" element={<DonationForm />} />
+        <Route path="/saved" element={<Saved user ='user' foods={FOOD_DATA }/>}/>
    
       </Routes>
     </Router> 
