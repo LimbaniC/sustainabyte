@@ -1,16 +1,30 @@
-import React from "react";
+import React, { FormEvent } from "react";
 import styles from "./SearchBar.module.css"
-import "../../../../src/assets/fonts.css"
+import { useAppContext } from "../../WrapperComponent/ContextWrapper";
+import "../../../../src/assets/fonts.css";
+
 
 
 const SearchBar = () => {
 
-    const handleSearch =  (event: React.FormEvent<HTMLFormElement>) => {
+    const { setSearch } = useAppContext(); 
+
+    const handleSearch =  (event: FormEvent<HTMLFormElement>) => {
         //prevents the page from reloaded
         event.preventDefault();
-        alert("You entered something!")
-        //needs to be added to
+
+        const inputElement = event.currentTarget.elements.namedItem("search-bar-entry") as HTMLInputElement;
+        if (inputElement) {
+            setSearch(inputElement.value.toString()); // Pass the string value
+        }    
+
+        console.log(event);
+        
+        // setSearch(event);
+
+        // searchFilter(event);
     };
+
 
 
 return (
