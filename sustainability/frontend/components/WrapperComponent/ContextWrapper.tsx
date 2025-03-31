@@ -3,6 +3,7 @@ import { createContext, useState } from 'react';
 import { useContext } from 'react';
 import { FoodType } from '../FoodComponent/FoodComponent';
 import { ReactNode } from 'react';
+import { FOOD_DATA } from '../../../backend/DATA/FoodData';
 
 interface AppContextType {
     food: FoodType, 
@@ -36,7 +37,7 @@ const ContextWrapper = ({children}: {children: ReactNode}) => {
     foodAllergen: ""
   })
 
- const [foodList, setFoodList] = useState<FoodType[]>([]);
+ const [foodList, setFoodList] = useState<FoodType[]>(FOOD_DATA);
 
  const addToFoodList = (food: FoodType) => { 
     setFoodList([...foodList, food]);

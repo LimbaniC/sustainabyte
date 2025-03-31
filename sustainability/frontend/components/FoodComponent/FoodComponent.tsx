@@ -23,6 +23,7 @@ export type FoodType = {
       foodExpirationDate: Date, 
       foodDescription: string, 
       foodAllergen: string
+      value?: number
 
 }
 
