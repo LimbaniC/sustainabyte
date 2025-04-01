@@ -10,7 +10,8 @@ export type FoodType = {
       foodExpirationDate: Date, 
       foodDescription: string, 
       foodAllergen: string
-      value?: number
+      value?: number,
+      imageUrl?: string
 
 }
 
@@ -19,8 +20,11 @@ const FoodComponent: React.FC<{food: FoodType}> = ({food}) => {
     return (
       <div className="food-card">
         <div className="food-image">
-          <img src="" alt="" ></img>
-        </div>
+          {food.imageUrl ? ( <img src={food.imageUrl} alt={food.foodName} />
+  ) : (
+    <div className="image-placeholder">No image</div>
+  )}
+</div>
 
         <div className="food-info">
           <h3>{food.foodName}</h3>

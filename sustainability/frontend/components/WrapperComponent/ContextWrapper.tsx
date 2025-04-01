@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { createContext, useState } from 'react';
 import { useContext } from 'react';
 import { FoodType } from '../FoodComponent/FoodComponent';
@@ -38,10 +38,31 @@ const ContextWrapper = ({children}: {children: ReactNode}) => {
     foodCategory: "",
     foodExpirationDate: new Date(),
     foodDescription: "",
-    foodAllergen: ""
+    foodAllergen: "", 
+    imageUrl: ""
   })
 
- const [foodList, setFoodList] = useState<FoodType[]>(FOOD_DATA);
+//  const [foodList, setFoodList] = useState<FoodType[]>(FOOD_DATA); 
+
+const [foodList, setFoodList] = useState<FoodType[]>(() => {
+  const stored = localStorage.getItem("foodList");
+  if (stored) {
+    try {
+      const parsed = JSON.parse(stored) as FoodType[];
+      return parsed.map((f) => ({
+        ...f,
+        foodExpirationDate: new Date(f.foodExpirationDate),
+      }));
+    } catch (err) {
+      console.error("Invalid localStorage data for foodList", err);
+    }
+  }
+  return FOOD_DATA;
+});
+ 
+useEffect(() => {
+  localStorage.setItem("foodList", JSON.stringify(foodList));
+}, [foodList]);
 
  const addToFoodList = (food: FoodType) => { 
     setFoodList([...foodList, food]);
