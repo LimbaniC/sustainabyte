@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
@@ -12,14 +12,6 @@ export function Navbar({ Anchors }: { Anchors: NavAnchor[] }) {
 
   return (
     <nav className="navbar">
-<<<<<<< HEAD
-      <Link to="/" className="navbar-brand">
-        <img src="/unnamed.png" alt="SUSTAIN-A-BITE Logo" className="logo" />
-      </Link>
-      <button onClick={() => setIsOpen(!isOpen)} className="menu-icon md:hidden">
-        ☰
-      </button>
-=======
       
       <Link to="/" className="navbar-brand">
         <img src="/unnamed.png" alt="SUSTAIN-A-BITE Logo" className="logo" />
@@ -31,7 +23,6 @@ export function Navbar({ Anchors }: { Anchors: NavAnchor[] }) {
       </button>
 
       
->>>>>>> origin/main
       <div className={`menu ${isOpen ? "active" : ""}`}>
         <ul>
           {Anchors.map((anchor, index) => (
