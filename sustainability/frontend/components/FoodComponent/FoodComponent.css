@@ -2,21 +2,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #ffffff; 
+    background-color: #f9f9f9; 
     border-radius: 10px;
     padding: 16px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    width: 20rem;
-    height: 20rem;
-    min-width: 20rem;
-    min-height: 20rem;
+    max-width: 21rem;
+    max-height: 24rem;
+    min-width: 21rem;
+    min-height: 24rem;
     text-align: center;
     color:black;
+    overflow: scroll;
   }
   
   .food-image {
-    width: 8rem;
-    height: 7rem;
+    width: 14rem;
+    min-height: 11rem;
     background-color: rgb(160, 151, 151);
   } 
 
@@ -29,11 +30,21 @@
   
   .food-info {
     padding: 20px;
-    font-family: "League Spartan", sans-serif;
+    padding-top: 0px;
+    font-family: "Sono", monospace;  
+    font-size: 16px;
+    letter-spacing: 0.01rem;  
     text-align: left;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    font-size: 18px;
+  }
+  .add-cart {
+    font-family: "Sono", monospace;  
+    margin-top: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  .add-cart:focus {
+    outline: none;
   }

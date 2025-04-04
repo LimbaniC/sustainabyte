@@ -64,7 +64,7 @@ const DonationForm = () => {
         <button type="submit">Donate</button>
       </form>
 
-      <p className="donation-paragraph">{JSON.stringify(food)}</p> 
+      {/* <p className="donation-paragraph">{JSON.stringify(food)}</p>  */}
 
     </div> 
 

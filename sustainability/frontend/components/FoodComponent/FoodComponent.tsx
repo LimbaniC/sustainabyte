@@ -26,6 +26,7 @@ const FoodComponent: React.FC<{food: FoodType}> = ({food}) => {
   )}
 </div>
 
+        <button className="add-cart">Add to cart</button>
         <div className="food-info">
           <h3>{food.foodName}</h3>
           <p>Quantity: {food.foodAmount}</p>

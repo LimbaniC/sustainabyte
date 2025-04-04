@@ -25,7 +25,8 @@
   text-decoration: none;
   font-size: 30px; /* Keeps larger text */
   font-weight: bold; 
-
+  font-family: "Sono", monospace; 
+  letter-spacing: 0.01rem; 
 }
 
 /* ✅ Align Menu Items Closer to Login */
@@ -51,7 +52,7 @@
 }
 
 .nav-item.login a {
-  background-color: purple;
+  background-color: #4CAF50;
   color: white !important;
   padding: 10px 20px;
   border-radius: 5px;

@@ -1,12 +1,9 @@
 .container {
   display: grid;
-  grid-template-columns: auto auto auto;
-  padding: 2rem;
-  row-gap: 2rem;
-}
-.container > div{
-  display: flex;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
   align-items: center;
-  justify-content: center;
+  justify-items: center;
+  padding-top: 2rem;
+  row-gap: 2rem;
 }
   

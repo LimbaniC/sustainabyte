@@ -11,31 +11,34 @@ input[type="search"]::-webkit-search-cancel-button {
     padding-top: 1rem;
 }
   .container > .search_input {
-    font-family: "League Spartan", sans-serif;
-    font-size: 20px;
-    box-shadow: #00000026 1.95px 1.95px 2.6px; 
+    font-family: "Sono", monospace; 
+    font-size: 16px;
+    letter-spacing: 0.01rem;
+    /* box-shadow: #00000026 1.95px 1.95px 2.6px;  */
     height: 3.5rem;
     width: 50%;
-    border-radius: 30px 30px 30px 30px;
-    border: solid;
-    border-width: 0.5px;
-    color: rgb(53, 51, 51);
+    border-radius: 8px 8px 8px 8px;
+    border: 2px solid #ddd;
+    color: rgb(38, 36, 36);
     padding: 12px 20px;
     padding-left: 2rem;
     padding-right: 2rem;
   }
+  input[type="search"],
+  .search_button:focus {
+    outline: none;
+    border-color: #4CAF50;
+  }
   .container > .search_button {
-    font-family: "League Spartan", sans-serif;
-    font-size: 20px;
+    font-family: "Sono", monospace; 
+    font-size: 16px;
+    letter-spacing: 0.01rem; 
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; 
     color: #ffffff;
-    height: 3.75rem;
-    background-color: rgb(124, 151, 96);
-    border-radius: 30px 30px 30px 30px;
+    height: 3.5rem;
+    background-color: #4CAF50;
+    border-radius: 8px 8px 8px 8px;
   }
   .container > .search_button:hover {
-    background-color: rgb(93, 112, 73);
-  }
-  .container > .search_button:focus {
-    outline: none;
+    background-color: #45a049;
   }
