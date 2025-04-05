@@ -44,3 +44,40 @@
 .saved-button:hover {
     background-color: #218838; /* Darker green on hover */
 }
+
+.square {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2%;
+  }
+
+.flex{
+    display: flex;
+    align-items:center
+}
+
+.placeholder-scales{
+    background-color: #a5a2a2;
+    font-family: "Sono", monospace; 
+  font-size: 50%;
+}
+
+.food-name {
+    flex-grow: 1;
+  }
+  
+  .remove-button {
+    background: none;
+    border: none;
+    color: red;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 8px;
+  }
+  
+  .remove-button:hover {
+    background-color: lightcoral;
+  }
