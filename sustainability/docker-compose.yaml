@@ -1,0 +1,44 @@
+services:
+    #Jacob's service - make sure your dockerfile is in a subfolder called logger-service
+    #logger-service:
+    #    build:
+    #        context: ./logger-service
+    #       dockerfile: Dockerfile
+    #   ports:
+    #        - "5000:3001"
+
+    #Nasra's service - make sure your dockerfile is in a subfolder called food-upload-service
+    #food-upload-service:
+    #    build:
+    #        context: ./food-upload-service
+    #        dockerfile: Dockerfile
+    #    ports:
+    #        - "5001:3004"
+    
+    #Grace's service - make sure your dockerfile is in a subfolder called authentication-service
+   
+    #authentication-service:
+    #    build:
+    #        context: ./authentication-service
+    #        dockerfile: Dockerfile
+    #    ports:
+    #        - "5002:3003"
+            
+    #Limbani's service 
+    food-db-service:
+        build:
+            context: /services/food-db-service
+            dockerfile: Dockerfile
+        ports:
+            - "5003:3002"
+        volumes:
+            - food-db-data:/data/db
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=root
+            - MONGO_INITDB_ROOT_PASSWORD=example
+
+volumes:
+    food-db-data:
+
+
+
