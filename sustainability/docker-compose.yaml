@@ -6,6 +6,8 @@ services:
     #       dockerfile: Dockerfile
     #   ports:
     #        - "5000:3001"
+    #    networks:
+    #        - sustain-network
 
     #Nasra's service - make sure your dockerfile is in a subfolder called food-upload-service
     #food-upload-service:
@@ -14,7 +16,9 @@ services:
     #        dockerfile: Dockerfile
     #    ports:
     #        - "5001:3004"
-    
+    #    networks:
+    #        - sustain-network
+
     #Grace's service - make sure your dockerfile is in a subfolder called authentication-service
    
     #authentication-service:
@@ -23,6 +27,8 @@ services:
     #        dockerfile: Dockerfile
     #    ports:
     #        - "5002:3003"
+    #     networks:
+    #        - sustain-network
             
     #Limbani's service 
     food-db-service:
@@ -36,6 +42,12 @@ services:
         environment:
             - MONGO_INITDB_ROOT_USERNAME=root
             - MONGO_INITDB_ROOT_PASSWORD=example
+        networks:
+            - sustain-network
+
+networks:
+    sustain-network:
+        driver: bridge
 
 volumes:
     food-db-data:
