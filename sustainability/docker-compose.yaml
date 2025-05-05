@@ -1,13 +1,15 @@
 services:
-    #Jacob's service - make sure your dockerfile is in a subfolder called logger-service
-    #logger-service:
-    #    build:
-    #        context: ./logger-service
-    #       dockerfile: Dockerfile
-    #   ports:
-    #        - "5000:3001"
-    #    networks:
-    #        - sustain-network
+    logger-service:
+        build:
+            context: sustainability/services/logger-service
+            dockerfile: Dockerfile
+        ports:
+            - "50000:3001"
+        volumes:
+            - ./services/logger-service/logs:/app/logs  
+        networks:
+            - sustain-network
+            
 
     #Nasra's service - make sure your dockerfile is in a subfolder called food-upload-service
     #food-upload-service:
@@ -51,6 +53,7 @@ networks:
 
 volumes:
     food-db-data:
+    logger-logs:
 
 
 
