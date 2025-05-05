@@ -21,29 +21,29 @@ services:
 
     #Grace's service - make sure your dockerfile is in a subfolder called authentication-service
    
-    #authentication-service:
-    #    build:
-    #        context: ./authentication-service
-    #        dockerfile: Dockerfile
-    #    ports:
-    #        - "5002:3003"
-    #     networks:
-    #        - sustain-network
+    authentication-service:
+        build:
+           context: ./services/authentication-service
+           dockerfile: Dockerfile
+        ports:
+           - "5002:3003"
+        networks:
+           - sustain-network
             
     #Limbani's service 
-    food-db-service:
-        build:
-            context: /services/food-db-service
-            dockerfile: Dockerfile
-        ports:
-            - "5003:3002"
-        volumes:
-            - food-db-data:/data/db
-        environment:
-            - MONGO_INITDB_ROOT_USERNAME=root
-            - MONGO_INITDB_ROOT_PASSWORD=example
-        networks:
-            - sustain-network
+    # food-db-service:
+    #     build:
+    #         context: ./services/food-db-service
+    #         dockerfile: Dockerfile
+    #     ports:
+    #         - "5003:3002"
+    #     volumes:
+    #         - food-db-data:/data/db
+    #     environment:
+    #         - MONGO_INITDB_ROOT_USERNAME=root
+    #         - MONGO_INITDB_ROOT_PASSWORD=example
+    #     networks:
+    #         - sustain-network
 
 networks:
     sustain-network:
