@@ -45,6 +45,17 @@ services:
         networks:
             - sustain-network
 
+    db-crud-service:
+        build:
+            context: /services/db-crud-service
+            dockerfile: Dockerfile
+        ports:
+            - "5004:3005"
+        environment:
+            - MONGO_URI=mongodb://root:example@food-db-service:27017/food?authSource=admin
+        networks:
+            - sustain-network
+
 networks:
     sustain-network:
         driver: bridge
