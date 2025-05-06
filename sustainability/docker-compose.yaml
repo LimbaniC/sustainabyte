@@ -26,24 +26,24 @@ services:
            context: ./services/authentication-service
            dockerfile: Dockerfile
         ports:
-           - "5002:3003"
+           - "3003:3003"
         networks:
            - sustain-network
             
-    #Limbani's service 
-    # food-db-service:
-    #     build:
-    #         context: ./services/food-db-service
-    #         dockerfile: Dockerfile
-    #     ports:
-    #         - "5003:3002"
-    #     volumes:
-    #         - food-db-data:/data/db
-    #     environment:
-    #         - MONGO_INITDB_ROOT_USERNAME=root
-    #         - MONGO_INITDB_ROOT_PASSWORD=example
-    #     networks:
-    #         - sustain-network
+    ## Limbani's service
+    food-db-service:
+        build:
+            context: ./services/food-db-service
+            dockerfile: Dockerfile
+        ports:
+            - "5003:3002"
+        volumes:
+            - food-db-data:/data/db
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=root
+            - MONGO_INITDB_ROOT_PASSWORD=example
+        networks:
+            - sustain-network
 
 networks:
     sustain-network:
