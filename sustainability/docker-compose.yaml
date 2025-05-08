@@ -18,14 +18,14 @@ services:
     #        - sustain-network
 
     #Nasra's service - make sure your dockerfile is in a subfolder called food-upload-service
-    #food-upload-service:
-    #    build:
-    #        context: ./food-upload-service
-    #        dockerfile: Dockerfile
-    #    ports:
-    #        - "5001:3004"
-    #    networks:
-    #        - sustain-network
+    food-upload-service:
+       build:
+           context: ./services/food-upload-service
+           dockerfile: Dockerfile
+       ports:
+           - "3004:3004"
+       networks:
+           - sustain-network
 
     #Grace's service - make sure your dockerfile is in a subfolder called authentication-service
    
@@ -44,7 +44,7 @@ services:
             context: ./services/food-db-service
             dockerfile: Dockerfile
         ports:
-            - "5003:3002"
+            - "3002:3002"
         volumes:
             - food-db-data:/data/db
         environment:
