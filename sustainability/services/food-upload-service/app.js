@@ -9,7 +9,7 @@ app.use(express.json({ limit: '20mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(cors());
 
-// 'mongodb://root:example@food-upload-db:27017'
+
 const uri = 'mongodb://root:example@food-upload-db:27017';
 const client = new MongoClient(uri);
 
