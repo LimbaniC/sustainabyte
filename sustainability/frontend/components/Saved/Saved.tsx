@@ -1,20 +1,13 @@
-import React, { useContext } from "react";
-import type { FoodType} from "../FoodComponent/FoodComponent.tsx";
-import { useState } from "react";
+
 import { useAppContext } from '../WrapperComponent/ContextWrapper';
 import "./saved.css";
 
 
+export function SavedCard({user}:{user:string}){
 
-export function Saved({user}:{user: string}){
-
-
-    const {savedFoods, removeSavedFood,donatedFoods,removeDonatedFood} = useAppContext();
-
-  
-    return(
-      <div className ="center-saved">
-        <div className ="saved-card">
+  const {savedFoods, removeSavedFood,setSavedFoods} = useAppContext()
+return(
+  <div className ="saved-card">
             <p>Hello {user} you have saved:</p>
             <ul>
                 {savedFoods.map((food,index)=>(
@@ -34,10 +27,18 @@ export function Saved({user}:{user: string}){
                 }
                 
             </ul>
+          <button className='saved-button' onClick={() => setSavedFoods([])}> claim</button>
         </div>
+)
 
+}
 
-        <div className ="saved-card">
+function DonatedCard({user}:{user:string})
+{
+  const {donatedFoods,removeDonatedFood} = useAppContext();
+
+  return (
+    <div className ="saved-card">
             <p>Hello {user} you have donated:</p>
             <ul>
                 {donatedFoods.map((food,index)=>(
@@ -58,7 +59,31 @@ export function Saved({user}:{user: string}){
                 
             </ul>
         </div>
+  )
+}
 
+
+
+export function Saved({user}:{user: string}){
+
+
+    const {savedFoods,donatedFoods} = useAppContext();
+
+  
+    return(
+      <div className ="center-saved">
+        
+      {savedFoods.length >0 && <SavedCard user={user}/>}
+
+        
+      {donatedFoods.length > 0 && <DonatedCard user={user}/>}
+      {donatedFoods.length === 0 && savedFoods.length === 0 && (
+        <div className='saved-card'>
+          <p>
+            Donate or save food for it to appear on this page :)
+          </p>
+        </div>
+      )}
 
 
 

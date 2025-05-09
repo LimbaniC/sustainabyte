@@ -21,6 +21,7 @@ interface AppContextType {
     addDonatedFood: (food:FoodType) => void;
     removeDonatedFood: (index:number) => void;
     removeSavedFood: (index:number) => void;
+    setSavedFoods: (savedFoods:FoodType[]) => void;
     //setSearch: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
@@ -73,6 +74,7 @@ const [savedFoods, setSavedFoods] = useState<FoodType[]>([]);
 const [donatedFoods, setDonatedFoods] = useState<FoodType[]>([]);
 
 const removeSavedFood = (indexToRemove: number) => {
+  addToFoodList(savedFoods.filter((_, index) => index === indexToRemove)[0]);
   setSavedFoods(savedFoods.filter((_, index) => index !== indexToRemove));
 };
 
@@ -134,7 +136,7 @@ useEffect(() => {
 
 
   return (
-    <AppContext.Provider value={{food, foodList, searchTerm, savedFoods,donatedFoods, searchFilter, setSearch, updateFood, addToFoodList,addSavedFood,addDonatedFood,removeDonatedFood,removeSavedFood,removeFromFoodList}}>
+    <AppContext.Provider value={{food, foodList, searchTerm, savedFoods,donatedFoods, searchFilter, setSearch, updateFood, addToFoodList,addSavedFood,addDonatedFood,removeDonatedFood,removeSavedFood,removeFromFoodList,setSavedFoods}}>
         {children}
     </AppContext.Provider>
   )
