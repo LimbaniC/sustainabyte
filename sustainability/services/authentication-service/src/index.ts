@@ -17,6 +17,7 @@ const client = new MongoClient(uri);
 let db: Db;
 let users: Collection;
 
+// Connects to the mongodb server microservice
 async function db_connect() {
     try {
       await client.connect();
@@ -31,20 +32,21 @@ async function db_connect() {
 
 db_connect();
 
+// API enpoint to create a new user
 app.post('/users/create-user', async (req, res) => {
     res.set('Access-Control-Allow-Origin', 'http://localhost:5173');
     const username = req.body.username;
     //searches for user with input username
     const user = await users.findOne({"username" : username});
     if(user) {
-        //client error
+        //client error - checks if the username is already user
         return res.status(400).send("Username already in use");
     }
     else{
         try {
             //hashes password
             const hashedPass = await bcrypt.hash(req.body.password, 10);
-            //creates new user
+            //creates new user and a place to store data associated with their account
             const newUser = await users.insertOne({"username": req.body.username, "password": hashedPass, "donated-data": [], "save-data": []});
             if(newUser){
                 //success
@@ -57,17 +59,19 @@ app.post('/users/create-user', async (req, res) => {
     }
 });
 
+// API enpoint to login a user
 app.post('/users/login', async (req, res) => {
     res.set('Access-Control-Allow-Origin', 'http://localhost:5173');
     const username = req.body.username;
     const password = req.body.password;
+    // checking if there is a user that exists in the database with the same name
     const user = await users.findOne({"username" : username});
     if(!user) {
         //client error
         return res.status(400).send("Cant find user associated with username");
     }
     try {
-        //compares user input with hash value
+        //compares user input with hash value - checking if the password exists
         if(await bcrypt.compare(req.body.password, user.password)){
             //success
             res.status(201).send("Login successful")
