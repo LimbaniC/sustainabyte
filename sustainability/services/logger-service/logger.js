@@ -54,11 +54,11 @@ app.post('/log', (req, res) => {
     });
 });
 
-setInterval(() => {
+/*setInterval(() => {
     const now = Date.now();
     for (const [name, info] of Object.entries(services)) {
         if (now - info.lastSeen > 120000) delete services[name]; // stale for 2 min
     }
-}, 60000);
+}, 60000);*/
 
 app.listen(3001, () => console.log('Logger listening on port 3001'));
