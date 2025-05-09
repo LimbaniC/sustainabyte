@@ -18,10 +18,32 @@ services:
            context: ./services/food-upload-service
            dockerfile: Dockerfile
        ports:
-           - "3004:3004"
+           - "5001:3004"  
+       depends_on:
+           - food-upload-db 
+           
        networks:
-           - sustain-network
+           - sustain-network 
 
+    food-upload-db:
+         image: mongo:6.0
+         ports:
+             - "5004:27017"
+         volumes:
+             - food-upload-data:/data/db
+         environment:
+             - MONGO_INITDB_ROOT_USERNAME=root
+             - MONGO_INITDB_ROOT_PASSWORD=example
+         networks:
+              - sustain-network
+
+networks:
+     sustain-network:
+         driver: bridge
+
+volumes:
+  food-upload-data: 
+  
     #Grace's service - make sure your dockerfile is in a subfolder called authentication-service
    
     authentication-service:
@@ -33,28 +55,35 @@ services:
         networks:
            - sustain-network
             
-    ## Limbani's service
-    food-db-service:
-        build:
-            context: ./services/food-db-service
-            dockerfile: Dockerfile
-        ports:
-            - "27017:27017"
-        volumes:
-            - food-db-data:/data/db
-        environment:
-            - MONGO_INITDB_ROOT_USERNAME=root
-            - MONGO_INITDB_ROOT_PASSWORD=example
-        networks:
-            - sustain-network
 
-networks:
-    sustain-network:
-        driver: bridge
+    #Limbani's service 
+#     food-db-service:
+#         build:
+#             context: ./services/food-db-service
+#             dockerfile: Dockerfile
+#         ports:
+#             - "5003:3002"
+#         volumes:
+#             - food-db-data:/data/db
+#         environment:
+#             - MONGO_INITDB_ROOT_USERNAME=root
+#             - MONGO_INITDB_ROOT_PASSWORD=example
+#         networks:
+#             - sustain-network
 
-volumes:
-    food-db-data:
-    logger-logs:
+
+
+# networks:
+#     sustain-network:
+#         driver: bridge
+
+# volumes:
+#     food-db-data:
+
+#volumes:
+  #  food-db-data:
+  #  logger-logs:
+
 
 
 
