@@ -9,6 +9,15 @@ services:
     #    networks:
     #        - sustain-network
 
+    api-gateway:
+        build:
+            context: ./services/api-gateway
+            dockerfile: Dockerfile
+        ports:
+            - "3000:3000"
+        networks:
+            - sustain-network
+
     #Nasra's service - make sure your dockerfile is in a subfolder called food-upload-service
     food-upload-service:
        build:
