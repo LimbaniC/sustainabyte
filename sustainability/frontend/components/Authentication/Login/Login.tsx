@@ -36,7 +36,6 @@ const Login = () => {
   
     if (Object.keys(validationErrors).length === 0) {
       console.log("Form Submitted:", formData);
-
       try {
         const res = await fetch('http://localhost:3003/users/login', {
           method: 'POST',
