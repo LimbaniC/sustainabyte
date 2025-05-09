@@ -44,7 +44,7 @@ services:
             context: ./services/food-db-service
             dockerfile: Dockerfile
         ports:
-            - "3002:3002"
+            - "27017:27017"
         volumes:
             - food-db-data:/data/db
         environment:
