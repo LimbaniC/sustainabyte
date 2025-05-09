@@ -12,7 +12,7 @@ app.use(cors({
     origin: true,
 }));
 
-const uri = 'mongodb://root:example@food-db-service:27017';
+const uri = 'mongodb://root:example@food-upload-db:27017';
 const client = new MongoClient(uri);
 let db: Db;
 let users: Collection;

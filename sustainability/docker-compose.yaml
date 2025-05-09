@@ -1,8 +1,16 @@
 services:
+    react-app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - "5173:5173"
+        networks:
+            - sustain-network
 
     logger-service:
         build:
-            context: sustainability/services/logger-service
+            context: ./services/logger-service
             dockerfile: Dockerfile
         ports:
             - "50000:3001"
@@ -45,16 +53,8 @@ services:
              - MONGO_INITDB_ROOT_PASSWORD=example
          networks:
               - sustain-network
-
-networks:
-     sustain-network:
-         driver: bridge
-
-volumes:
-  food-upload-data: 
   
     #Grace's service - make sure your dockerfile is in a subfolder called authentication-service
-   
     authentication-service:
         build:
            context: ./services/authentication-service
@@ -63,6 +63,13 @@ volumes:
            - "3003:3003"
         networks:
            - sustain-network
+
+networks:
+     sustain-network:
+         driver: bridge
+
+volumes:
+  food-upload-data: 
             
 
     #Limbani's service 
