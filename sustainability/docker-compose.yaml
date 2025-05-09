@@ -1,21 +1,16 @@
 services:
-    react-app:
+
+    logger-service:
         build:
-            context: .
+            context: sustainability/services/logger-service
             dockerfile: Dockerfile
         ports:
-            - "5173:5173"
+            - "50000:3001"
+        volumes:
+            - ./services/logger-service/logs:/app/logs  
         networks:
             - sustain-network
-    #Jacob's service - make sure your dockerfile is in a subfolder called logger-service
-    #logger-service:
-    #    build:
-    #        context: ./logger-service
-    #       dockerfile: Dockerfile
-    #   ports:
-    #        - "5000:3001"
-    #    networks:
-    #        - sustain-network
+            
 
     #Nasra's service - make sure your dockerfile is in a subfolder called food-upload-service
     food-upload-service:
@@ -77,12 +72,18 @@ volumes:
 #             - sustain-network
 
 
+
 # networks:
 #     sustain-network:
 #         driver: bridge
 
 # volumes:
 #     food-db-data:
+
+#volumes:
+  #  food-db-data:
+  #  logger-logs:
+
 
 
 
