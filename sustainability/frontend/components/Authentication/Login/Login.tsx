@@ -36,8 +36,6 @@ const Login = () => {
   
     if (Object.keys(validationErrors).length === 0) {
       console.log("Form Submitted:", formData);
-
-      let response = '';
       try {
         const res = await fetch('http://localhost:3003/users/login', {
           method: 'POST',
@@ -50,7 +48,7 @@ const Login = () => {
         alert(text);
       }
       catch (error) {
-        console.log("Error connecting to the server")
+        console.log("Error connecting to the server", error)
       }
     }
     };
