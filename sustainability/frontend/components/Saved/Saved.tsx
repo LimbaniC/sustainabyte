@@ -1,7 +1,7 @@
 import React from "react";
 import type { FoodType} from "../FoodComponent/FoodComponent.tsx";
 import { useState } from "react";
-import "./saved.css";
+import "./Saved.css";
 
 
 

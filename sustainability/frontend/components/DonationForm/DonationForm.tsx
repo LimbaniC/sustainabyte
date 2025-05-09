@@ -5,7 +5,7 @@ import './DonationForm.css';
 
 const DonationForm = () => {
 
- const { food, updateFood, addToFoodList}  = useAppContext(); 
+ const { updateFood, addToFoodList}  = useAppContext(); 
  const [imageUrl, setImageUrl] = useState<string | null>(null);
  const [showThankYou, setShowThankYou] = useState(false); 
 
@@ -21,6 +21,48 @@ const DonationForm = () => {
 
   };
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const foodName = formData.get('foodName') as string;
+    const foodAmount = parseInt(formData.get('foodAmount') as string, 10);
+    const foodCategory = formData.get('foodCategory') as string;
+    const foodExpirationDate = new Date(formData.get('foodExpirationDate') as string);
+    const foodDescription = formData.get('foodDescription') as string;
+    const foodAllergen = formData.get('foodAllergen') as string;
+
+    const foodData = {
+      foodName,
+      foodAmount,
+      foodCategory,
+      foodExpirationDate,
+      foodDescription,
+      foodAllergen,
+      imageUrl: imageUrl ?? ""
+    };
+
+    try {
+      const response = await fetch('http://localhost:3004/upload', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(foodData)
+      });
+
+      if (response.ok) {
+        const newFood = { id: Date.now(), ...foodData };
+        updateFood(newFood);
+        addToFoodList(newFood);
+        setShowThankYou(true);
+        setTimeout(() => setShowThankYou(false), 3000);
+        (e.target as HTMLFormElement).reset();
+        setImageUrl(null);
+      } else {
+        console.error('Failed to upload food');
+      }
+    } catch (error) {
+      console.error('Error posting food data:', error);
+    }
+  };
 
   return (  
     <> 
@@ -32,29 +74,7 @@ const DonationForm = () => {
     <><div className="outer">
 
       <h1>Donate your Food!</h1>
-      <form onSubmit={(e) => {
-        e.preventDefault();
-        const formData = new FormData(e.target as HTMLFormElement);
-        const foodName = formData.get('foodName') as string;
-        const foodAmount = parseInt(formData.get('foodAmount') as string, 10);
-        const foodCategory = formData.get('foodCategory') as string;
-        const foodExpirationDate = new Date(formData.get('foodExpirationDate') as string);
-        const foodDescription = formData.get('foodDescription') as string;
-        const foodAllergen = formData.get('foodAllergen') as string;
-        const id = Date.now();
-
-        const newFood = { id, foodName, foodAmount, foodCategory, foodExpirationDate, foodDescription, foodAllergen, imageUrl: imageUrl ?? undefined};
-        updateFood(newFood);
-        addToFoodList(newFood); 
-
-        setShowThankYou(true);
-        setTimeout(() => setShowThankYou(false), 3000);
-
-
-        e.currentTarget.reset();
-        setImageUrl(null);
-
-      } }>
+      <form onSubmit={handleSubmit}>
         <input type="text" name="foodName" placeholder="Food Name" required />
         <input type="number" name="foodAmount" placeholder="Food Amount" required />
         <input type="text" name="foodCategory" placeholder="Food Category" required />

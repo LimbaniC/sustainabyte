@@ -1,4 +1,5 @@
 services:
+
     logger-service:
         build:
             context: sustainability/services/logger-service
@@ -12,33 +13,33 @@ services:
             
 
     #Nasra's service - make sure your dockerfile is in a subfolder called food-upload-service
-    #food-upload-service:
-    #    build:
-    #        context: ./food-upload-service
-    #        dockerfile: Dockerfile
-    #    ports:
-    #        - "5001:3004"
-    #    networks:
-    #        - sustain-network
+    food-upload-service:
+       build:
+           context: ./services/food-upload-service
+           dockerfile: Dockerfile
+       ports:
+           - "3004:3004"
+       networks:
+           - sustain-network
 
     #Grace's service - make sure your dockerfile is in a subfolder called authentication-service
    
-    #authentication-service:
-    #    build:
-    #        context: ./authentication-service
-    #        dockerfile: Dockerfile
-    #    ports:
-    #        - "5002:3003"
-    #     networks:
-    #        - sustain-network
+    authentication-service:
+        build:
+           context: ./services/authentication-service
+           dockerfile: Dockerfile
+        ports:
+           - "3003:3003"
+        networks:
+           - sustain-network
             
-    #Limbani's service 
+    ## Limbani's service
     food-db-service:
         build:
-            context: /services/food-db-service
+            context: ./services/food-db-service
             dockerfile: Dockerfile
         ports:
-            - "5003:3002"
+            - "27017:27017"
         volumes:
             - food-db-data:/data/db
         environment:
