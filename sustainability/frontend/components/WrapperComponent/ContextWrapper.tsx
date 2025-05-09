@@ -4,15 +4,23 @@ import { useContext } from 'react';
 import { FoodType } from '../FoodComponent/FoodComponent';
 import { ReactNode } from 'react';
 import { FOOD_DATA } from '../../../backend/DATA/FoodData';
+import FoodList from '../FoodComponent/FoodList/FoodList';
 
 interface AppContextType {
     food: FoodType, 
     foodList: FoodType[],
     updateFood: (updates: Partial<FoodType>) => void;
     addToFoodList: (food: FoodType) => void;
+    removeFromFoodList: (index: number) => void;
     searchTerm: string,
     searchFilter: (item: FoodType[]) => FoodType[];
-    setSearch: (e: string) => void
+    setSearch: (e: string) => void,
+    savedFoods: FoodType[],
+    donatedFoods: FoodType[],
+    addSavedFood: (food:FoodType) => void;
+    addDonatedFood: (food:FoodType) => void;
+    removeDonatedFood: (index:number) => void;
+    removeSavedFood: (index:number) => void;
     //setSearch: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
@@ -59,6 +67,32 @@ const [foodList, setFoodList] = useState<FoodType[]>(() => {
   }
   return FOOD_DATA;
 });
+
+const [savedFoods, setSavedFoods] = useState<FoodType[]>([]);
+
+const [donatedFoods, setDonatedFoods] = useState<FoodType[]>([]);
+
+const removeSavedFood = (indexToRemove: number) => {
+  setSavedFoods(savedFoods.filter((_, index) => index !== indexToRemove));
+};
+
+const removeDonatedFood = (indexToRemove: number) => {
+  setDonatedFoods(donatedFoods.filter((_, index) => index !== indexToRemove));
+};
+
+
+
+const removeFromFoodList = (idToRemove: number) => {
+  setFoodList((prev) => prev.filter((f) => f.id !== idToRemove));
+};
+const addSavedFood = (food: FoodType) => {
+  setSavedFoods([...savedFoods, food]);
+};
+
+const addDonatedFood = (food: FoodType) => {
+  setDonatedFoods([...donatedFoods, food]);
+};
+
  
 useEffect(() => {
   localStorage.setItem("foodList", JSON.stringify(foodList));
@@ -93,12 +127,14 @@ useEffect(() => {
         item.foodName.toLowerCase().includes(searchTerm.toString().toLowerCase())
       );
     }
+
+
   
 
 
 
   return (
-    <AppContext.Provider value={{food, foodList, searchTerm, searchFilter, setSearch, updateFood, addToFoodList}}>
+    <AppContext.Provider value={{food, foodList, searchTerm, savedFoods,donatedFoods, searchFilter, setSearch, updateFood, addToFoodList,addSavedFood,addDonatedFood,removeDonatedFood,removeSavedFood,removeFromFoodList}}>
         {children}
     </AppContext.Provider>
   )
