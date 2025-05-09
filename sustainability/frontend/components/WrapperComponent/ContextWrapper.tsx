@@ -132,8 +132,11 @@ useEffect(() => {
 
 
   
+    // const [isLoggedIn, setLoginState] = useState(false);
 
-
+    // setLoginState = (value: boolean) => {
+    //     isLoggedIn = value;
+    // };
 
   return (
     <AppContext.Provider value={{food, foodList, searchTerm, savedFoods,donatedFoods, searchFilter, setSearch, updateFood, addToFoodList,addSavedFood,addDonatedFood,removeDonatedFood,removeSavedFood,removeFromFoodList,setSavedFoods}}>

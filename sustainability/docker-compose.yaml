@@ -1,13 +1,16 @@
 services:
-    #Jacob's service - make sure your dockerfile is in a subfolder called logger-service
-    #logger-service:
-    #    build:
-    #        context: ./logger-service
-    #       dockerfile: Dockerfile
-    #   ports:
-    #        - "5000:3001"
-    #    networks:
-    #        - sustain-network
+
+    logger-service:
+        build:
+            context: sustainability/services/logger-service
+            dockerfile: Dockerfile
+        ports:
+            - "50000:3001"
+        volumes:
+            - ./services/logger-service/logs:/app/logs  
+        networks:
+            - sustain-network
+            
 
     #Nasra's service - make sure your dockerfile is in a subfolder called food-upload-service
     food-upload-service:
@@ -15,42 +18,72 @@ services:
            context: ./services/food-upload-service
            dockerfile: Dockerfile
        ports:
-           - "3004:3004"
+           - "5001:3004"  
+       depends_on:
+           - food-upload-db 
+           
        networks:
-           - sustain-network
+           - sustain-network 
 
-    #Grace's service - make sure your dockerfile is in a subfolder called authentication-service
-   
-    #authentication-service:
-    #    build:
-    #        context: ./authentication-service
-    #        dockerfile: Dockerfile
-    #    ports:
-    #        - "5002:3003"
-    #     networks:
-    #        - sustain-network
-            
-    #Limbani's service 
-    food-db-service:
-        build:
-            context: ./services/food-db-service
-            dockerfile: Dockerfile
-        ports:
-            - "3002:3002"
-        volumes:
-            - food-db-data:/data/db
-        environment:
-            - MONGO_INITDB_ROOT_USERNAME=root
-            - MONGO_INITDB_ROOT_PASSWORD=example
-        networks:
-            - sustain-network
+    food-upload-db:
+         image: mongo:6.0
+         ports:
+             - "5004:27017"
+         volumes:
+             - food-upload-data:/data/db
+         environment:
+             - MONGO_INITDB_ROOT_USERNAME=root
+             - MONGO_INITDB_ROOT_PASSWORD=example
+         networks:
+              - sustain-network
 
 networks:
-    sustain-network:
-        driver: bridge
+     sustain-network:
+         driver: bridge
 
 volumes:
-    food-db-data:
+  food-upload-data: 
+  
+    #Grace's service - make sure your dockerfile is in a subfolder called authentication-service
+   
+    authentication-service:
+        build:
+           context: ./services/authentication-service
+           dockerfile: Dockerfile
+        ports:
+           - "3003:3003"
+        networks:
+           - sustain-network
+            
+
+    #Limbani's service 
+#     food-db-service:
+#         build:
+#             context: ./services/food-db-service
+#             dockerfile: Dockerfile
+#         ports:
+#             - "5003:3002"
+#         volumes:
+#             - food-db-data:/data/db
+#         environment:
+#             - MONGO_INITDB_ROOT_USERNAME=root
+#             - MONGO_INITDB_ROOT_PASSWORD=example
+#         networks:
+#             - sustain-network
+
+
+
+# networks:
+#     sustain-network:
+#         driver: bridge
+
+# volumes:
+#     food-db-data:
+
+#volumes:
+  #  food-db-data:
+  #  logger-logs:
+
 
 
 
