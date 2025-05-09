@@ -1,4 +1,12 @@
 services:
+    react-app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - "5173:5173"
+        networks:
+            - sustain-network
     #Jacob's service - make sure your dockerfile is in a subfolder called logger-service
     #logger-service:
     #    build:
@@ -17,7 +25,8 @@ services:
        ports:
            - "5001:3004"  
        depends_on:
-           - food-upload-db
+           - food-upload-db 
+           
        networks:
            - sustain-network 
 
@@ -42,15 +51,16 @@ volumes:
   
     #Grace's service - make sure your dockerfile is in a subfolder called authentication-service
    
-    #authentication-service:
-    #    build:
-    #        context: ./authentication-service
-    #        dockerfile: Dockerfile
-    #    ports:
-    #        - "5002:3003"
-    #     networks:
-    #        - sustain-network
+    authentication-service:
+        build:
+           context: ./services/authentication-service
+           dockerfile: Dockerfile
+        ports:
+           - "3003:3003"
+        networks:
+           - sustain-network
             
+
     #Limbani's service 
 #     food-db-service:
 #         build:
@@ -65,6 +75,7 @@ volumes:
 #             - MONGO_INITDB_ROOT_PASSWORD=example
 #         networks:
 #             - sustain-network
+
 
 # networks:
 #     sustain-network:
