@@ -36,7 +36,6 @@ const Signup: React.FC = () => {
 
     if (Object.keys(validationErrors).length === 0) {
       console.log("Form Submitted:", formData);
-      let response = '';
       try {
         const res = await fetch('http://localhost:3003/users/create-user', {
           method: 'POST',
@@ -49,7 +48,7 @@ const Signup: React.FC = () => {
         alert(text);
       }
       catch (error) {
-        console.log("Error connecting to the server");
+        console.log("Error connecting to the server", error);
       }
     }
   }

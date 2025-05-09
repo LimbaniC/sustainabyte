@@ -8,7 +8,7 @@ export type NavAnchor = {
 };
 
 export function Navbar({ Anchors }: { Anchors: NavAnchor[] }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); 
 
   return (
     <nav className="navbar">
@@ -16,8 +16,6 @@ export function Navbar({ Anchors }: { Anchors: NavAnchor[] }) {
       <Link to="/" className="navbar-brand">
         <img src="/unnamed.png" alt="SUSTAIN-A-BITE Logo" className="logo" />
       </Link>
-
-      
       <button onClick={() => setIsOpen(!isOpen)} className="menu-icon md:hidden">
         ☰
       </button>

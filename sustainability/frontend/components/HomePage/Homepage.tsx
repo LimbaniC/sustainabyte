@@ -1,6 +1,10 @@
 import React, {useState} from "react"; 
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; 
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import "./Homepage.css";
+
+
 
 
 const teamMembers = [
@@ -28,7 +32,31 @@ const Home: React.FC = () => {
     name: "",
     email: "",
     message: "",
-  });
+  }); 
+
+  const location = useLocation();
+
+useEffect(() => {
+  const params = new URLSearchParams(location.search);
+  const scrollTo = params.get("scrollTo");
+
+  if (scrollTo) {
+    const section = document.getElementById(scrollTo);
+    if (section) {
+      setTimeout(() => {
+        section.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  } else {
+    const hero = document.getElementById("hero");
+    if (hero) {
+      setTimeout(() => {
+        hero.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  }
+}, [location]); 
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
