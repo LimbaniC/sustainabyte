@@ -1,9 +1,19 @@
 
 import { useAppContext } from '../WrapperComponent/ContextWrapper';
+import { useEffect,useState } from 'react';
 import "./Saved.css";
 
 
-export function SavedCard({user}:{user:string}){
+export function SavedCard(){
+
+  const [user, setUser] = useState("");
+
+    useEffect(() => {
+      const storedUsername = localStorage.getItem("username");
+      if (storedUsername) {
+        setUser(storedUsername);
+      }
+    }, []);
 
   const {savedFoods, removeSavedFood,setSavedFoods} = useAppContext()
 return(
@@ -33,9 +43,18 @@ return(
 
 }
 
-function DonatedCard({user}:{user:string})
+function DonatedCard()
 {
   const {donatedFoods,removeDonatedFood} = useAppContext();
+
+  const [user, setUser] = useState("");
+
+    useEffect(() => {
+      const storedUsername = localStorage.getItem("username");
+      if (storedUsername) {
+        setUser(storedUsername);
+      }
+    }, []);
 
   return (
     <div className ="saved-card">
