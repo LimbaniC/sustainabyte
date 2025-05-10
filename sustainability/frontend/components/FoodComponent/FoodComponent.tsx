@@ -1,5 +1,6 @@
 import React from 'react';
 import './FoodComponent.css';
+import { useAppContext } from '../WrapperComponent/ContextWrapper';
 // import "../../../../src/assets/fonts.css"
 
 export type FoodType = { 
@@ -17,7 +18,10 @@ export type FoodType = {
 }
 
 
+
+
 const FoodComponent: React.FC<{food: FoodType}> = ({food}) => {
+  const {addSavedFood,removeFromFoodList} = useAppContext();
     return (
       <div className="food-card">
         <div className="food-image">
@@ -27,7 +31,7 @@ const FoodComponent: React.FC<{food: FoodType}> = ({food}) => {
   )}
 </div>
 
-        <button className="add-cart">Add to cart</button>
+        <button className="add-cart" onClick={() => {addSavedFood(food); removeFromFoodList(food.id); }}>Add to cart</button>
         <div className="food-info">
           <h3>{food.foodName}</h3>
           <p>Quantity: {food.foodAmount}</p>

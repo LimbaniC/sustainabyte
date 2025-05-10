@@ -34,7 +34,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/search" element={<SearchMain />}/>
         <Route path="/donate" element={<DonationForm />} />
-        <Route path="/saved" element={<Saved user ='user' foods={FOOD_DATA }/>}/>
+        <Route path="/saved" element={<Saved user ='user'/>}/>
    
       </Routes>
     </Router> 
