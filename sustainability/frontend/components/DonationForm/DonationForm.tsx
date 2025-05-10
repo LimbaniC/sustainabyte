@@ -5,7 +5,7 @@ import './DonationForm.css';
 
 const DonationForm = () => {
 
- const { updateFood, addToFoodList,addDonatedFood}  = useAppContext(); 
+ const { updateFood, addToFoodList}  = useAppContext(); 
  const [imageUrl, setImageUrl] = useState<string | null>(null);
  const [showThankYou, setShowThankYou] = useState(false); 
 
@@ -54,7 +54,6 @@ const DonationForm = () => {
         const newFood = { id: Date.now(), ...foodData };
         updateFood(newFood);
         addToFoodList(newFood);
-        addDonatedFood(newFood);
         setShowThankYou(true);
         setTimeout(() => setShowThankYou(false), 3000);
         (e.target as HTMLFormElement).reset();
