@@ -22,7 +22,7 @@ return(
             <ul>
                 {savedFoods.map((food,index)=>(
                     <li key={index} className="flex"><div className="square">
-                    {food.imageUrl ? ( <img src={food.imageUrl} alt={food.foodName} />
+                    {food.imageUrl ? ( <img className='square' src={food.imageUrl} alt={food.foodName} />
             ) : (
               <div className="placeholder-scales square">No image</div>
             )}
@@ -62,7 +62,7 @@ function DonatedCard()
             <ul>
                 {donatedFoods.map((food,index)=>(
                     <li key={index} className="flex"><div className="square">
-                    {food.imageUrl ? ( <img src={food.imageUrl} alt={food.foodName} />
+                    {food.imageUrl ? ( <img className='square' src={food.imageUrl} alt={food.foodName} />
             ) : (
               <div className="placeholder-scales square">No image</div>
             )}
