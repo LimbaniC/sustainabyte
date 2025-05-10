@@ -3,8 +3,12 @@ import { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import cors from "cors";
 import { MongoClient, Db, Collection } from "mongodb";
+import axios from 'axios';
 
 const PORT = 3003;
+
+const LOGGER_URL = process.env.LOGGER_URL || 'http://logger-service:3001';
+const SERVICE_NAME = process.env.SERVICE_NAME || 'user-authentication-service';
 
 const app = express(); 
 app.use(express.json());
@@ -70,6 +74,7 @@ app.post('/users/login', async (req, res) => {
         //compares user input with hash value
         if(await bcrypt.compare(req.body.password, user.password)){
             //success
+            log("info", "Login successful");
             res.status(201).send("Login successful")
         }
         else {
@@ -81,3 +86,19 @@ app.post('/users/login', async (req, res) => {
         res.status(500).send()
     }
 });
+
+async function log(level: string, message: string) {
+    try {
+        await axios.post(`${LOGGER_URL}/log`, {
+            service: SERVICE_NAME,
+            level,
+            message
+        });
+    } catch (err) {
+        if(err instanceof Error){
+        console.error(`Logger error (${level}):`, err.message);
+        }
+    }
+};
+
+module.exports = { log };

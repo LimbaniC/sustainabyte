@@ -29,7 +29,8 @@ const DonationForm = () => {
     const foodCategory = formData.get('foodCategory') as string;
     const foodExpirationDate = new Date(formData.get('foodExpirationDate') as string);
     const foodDescription = formData.get('foodDescription') as string;
-    const foodAllergen = formData.get('foodAllergen') as string;
+    const foodAllergen = formData.get('foodAllergen') as string; 
+    const contact = formData.get('contact') as string;
 
     const foodData = {
       foodName,
@@ -38,6 +39,7 @@ const DonationForm = () => {
       foodExpirationDate,
       foodDescription,
       foodAllergen,
+      contact,
       imageUrl: imageUrl ?? ""
     };
 
@@ -81,7 +83,8 @@ const DonationForm = () => {
         <input type="text" name="foodCategory" placeholder="Food Category" required />
         <input type="date" name="foodExpirationDate" required />
         <textarea name="foodDescription" placeholder="Food Description"></textarea>
-        <input type="text" name="foodAllergen" placeholder="Food Allergen" />
+        <input type="text" name="foodAllergen" placeholder="Food Allergen" /> 
+        <input type="text" name="contact" placeholder="Form of Contact" />
         <button type="submit">Donate</button>
       </form>
 

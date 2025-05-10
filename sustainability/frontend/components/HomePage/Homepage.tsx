@@ -1,24 +1,32 @@
 import React, {useState} from "react"; 
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; 
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import "./Homepage.css";
+
+
 
 
 const teamMembers = [
   { 
     name: "Nasra Hassan", 
-    description: ""
+    description: "Senior Computer Science and Math Major", 
+    linkedin: "https://www.linkedin.com/in/nasra-hassan-a85666186/"
   },
   { 
     name: "Limbani Chaponda", 
-    description: ""
+    description: "Senior Computer Science Major",
+    linkedin: ""
   },
   { 
     name: "Grace Schmelzer", 
-    description: ""
+    description: "Senior Computer Science Major",
+    linkedin: "https://www.linkedin.com/in/grace-schmelzer/"
   },
   { 
     name: "Jacob Cohen", 
-    description: ""
+    description: "Senior Computer Science Major",
+    linkedin: ""
   }, 
 ];
 
@@ -28,7 +36,24 @@ const Home: React.FC = () => {
     name: "",
     email: "",
     message: "",
-  });
+  }); 
+
+  const location = useLocation();
+
+  useEffect(() => {
+    const hash = window.location.hash;
+  
+    if (hash) {
+      const section = document.querySelector(hash);
+      if (section) {
+        setTimeout(() => {
+          section.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    }
+  }, [location]);
+  
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -43,7 +68,7 @@ const Home: React.FC = () => {
 
   return (
     <div className="home-container">
-      <header className="hero">
+      <header id="hero" className="hero">
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <p className="welcome-text">Welcome to!</p>
@@ -54,14 +79,14 @@ const Home: React.FC = () => {
           </Link>     
          </div>
       </header>
-      <section className="about-section">  
+      <section id="about" className="about-section">  
       <h2 className="about-title">About Us</h2>
         <div className="about-container"> 
           <div className="about-text">
             <p>
-          Sustainabyte was created with a single goal in mind: to bridge the gap between food waste and food insecurity.
-        Every year, tons of edible food are discarded, while countless individuals and families go hungry. 
-        Sustainabyte is a web and mobile platform that empowers both donors—like restaurants, grocery stores, and individuals—and recipients to connect with local food banks and distribution centers.
+          Sustainabyte is created with a single goal in mind: to bridge the gap between food waste and food insecurity.
+        Every year, tons of edible food are discarded, while countless individuals and families struggle to put food on the table. 
+        Sustainabyte is an online platform that empowers individuals within communities to give back to those struggling in their communities.
       </p>
       <p>
           Using the app is simple: users can sign up or log in to personalize their experience. From there, they can search for available food items, view locations offering donations, and save items to their cart. 
@@ -77,18 +102,19 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section> 
-      <section className="team-section">
+      <section id="team" className="team-section">
         <h2>Meet The Team</h2>
         <div className="team-grid">
           {teamMembers.map((member, index) => (
             <div key={index} className="team-item">
               <h3>{member.name}</h3>
               <p>{member.description}</p>
+              <a>{member.linkedin}</a>
             </div>
           ))}
         </div>
       </section> 
-      <section className="contact-section">
+      <section id="contact" className="contact-section">
         <h2>Contact Us</h2>
         <form className="contact-form" onSubmit={handleSubmit}>
           <input

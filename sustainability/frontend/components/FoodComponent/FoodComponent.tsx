@@ -10,7 +10,8 @@ export type FoodType = {
       foodCategory: string, 
       foodExpirationDate: Date, 
       foodDescription: string, 
-      foodAllergen: string
+      foodAllergen: string,
+      contact: string,
       value?: number,
       imageUrl?: string
 
@@ -34,8 +35,9 @@ const FoodComponent: React.FC<{food: FoodType}> = ({food}) => {
         <div className="food-info">
           <h3>{food.foodName}</h3>
           <p>Quantity: {food.foodAmount}</p>
-          <p>Expiration: {food.foodExpirationDate.toLocaleDateString()}</p>
-          <p>Description: {food.foodDescription}</p>
+          <p>Expiration: {food.foodExpirationDate.toLocaleDateString()}</p> 
+          <p>Contact: {food.contact}</p>
+          <p>Description: {food.foodDescription}</p> 
         </div>
 
       </div>

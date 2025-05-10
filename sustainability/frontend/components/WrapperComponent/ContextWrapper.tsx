@@ -48,6 +48,7 @@ const ContextWrapper = ({children}: {children: ReactNode}) => {
     foodExpirationDate: new Date(),
     foodDescription: "",
     foodAllergen: "", 
+    contact: "", 
     imageUrl: ""
   })
 
