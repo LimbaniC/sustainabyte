@@ -92,10 +92,10 @@ export function Saved({user}:{user: string}){
     return(
       <div className ="center-saved">
         
-      {savedFoods.length >0 && <SavedCard user={user}/>}
+      {savedFoods.length >0 && <SavedCard/>}
 
         
-      {donatedFoods.length > 0 && <DonatedCard user={user}/>}
+      {donatedFoods.length > 0 && <DonatedCard/>}
       {donatedFoods.length === 0 && savedFoods.length === 0 && (
         <div className='saved-card'>
           <p>
