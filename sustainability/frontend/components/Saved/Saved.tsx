@@ -83,7 +83,7 @@ function DonatedCard()
 
 
 
-export function Saved({user}:{user: string}){
+export function Saved(){
 
 
     const {savedFoods,donatedFoods} = useAppContext();
