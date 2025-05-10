@@ -6,19 +6,23 @@ import "./Homepage.css";
 const teamMembers = [
   { 
     name: "Nasra Hassan", 
-    description: ""
+    description: "Senior Computer Science and Math Major", 
+    linkedin: "https://www.linkedin.com/in/nasra-hassan-a85666186/"
   },
   { 
     name: "Limbani Chaponda", 
-    description: ""
+    description: "Senior Computer Science Major",
+    linkedin: ""
   },
   { 
     name: "Grace Schmelzer", 
-    description: ""
+    description: "Senior Computer Science Major",
+    linkedin: "https://www.linkedin.com/in/grace-schmelzer/"
   },
   { 
     name: "Jacob Cohen", 
-    description: ""
+    description: "Senior Computer Science Major",
+    linkedin: ""
   }, 
 ];
 
@@ -59,9 +63,9 @@ const Home: React.FC = () => {
         <div className="about-container"> 
           <div className="about-text">
             <p>
-          Sustainabyte was created with a single goal in mind: to bridge the gap between food waste and food insecurity.
-        Every year, tons of edible food are discarded, while countless individuals and families go hungry. 
-        Sustainabyte is a web and mobile platform that empowers both donors—like restaurants, grocery stores, and individuals—and recipients to connect with local food banks and distribution centers.
+          Sustainabyte is created with a single goal in mind: to bridge the gap between food waste and food insecurity.
+        Every year, tons of edible food are discarded, while countless individuals and families struggle to put food on the table. 
+        Sustainabyte is an online platform that empowers individuals within communities to give back to those struggling in their communities.
       </p>
       <p>
           Using the app is simple: users can sign up or log in to personalize their experience. From there, they can search for available food items, view locations offering donations, and save items to their cart. 
@@ -84,6 +88,7 @@ const Home: React.FC = () => {
             <div key={index} className="team-item">
               <h3>{member.name}</h3>
               <p>{member.description}</p>
+              <a>{member.linkedin}</a>
             </div>
           ))}
         </div>
