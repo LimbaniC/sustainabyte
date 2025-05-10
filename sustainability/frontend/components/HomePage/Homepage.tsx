@@ -11,22 +11,30 @@ const teamMembers = [
   { 
     name: "Nasra Hassan", 
     description: "Senior Computer Science and Math Major", 
-    linkedin: "https://www.linkedin.com/in/nasra-hassan-a85666186/"
+    linkedin: <a href= "https://www.linkedin.com/in/nasra-hassan-a85666186/" target="_blank">
+      Nasra's LinkedIn
+    </a>
   },
   { 
     name: "Limbani Chaponda", 
     description: "Senior Computer Science Major",
-    linkedin: ""
+    linkedin: <a href="https://www.linkedin.com/in/limbani/" target="_blank">
+      Limbani's LinkedIn
+    </a>
   },
   { 
     name: "Grace Schmelzer", 
     description: "Senior Computer Science Major",
-    linkedin: "https://www.linkedin.com/in/grace-schmelzer/"
+    linkedin: <a href="https://www.linkedin.com/in/grace-schmelzer/"  target="_blank">
+      Grace's LinkedIn
+    </a>
   },
   { 
     name: "Jacob Cohen", 
     description: "Senior Computer Science Major",
-    linkedin: ""
+    linkedin: <a href="https://www.linkedin.com/in/jacob-cohen-tech/" target="_blank">
+    Jacob's LinkedIn
+  </a>
   }, 
 ];
 
