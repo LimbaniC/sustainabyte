@@ -1,6 +1,6 @@
 
 import { useAppContext } from '../WrapperComponent/ContextWrapper';
-import "./saved.css";
+import "./Saved.css";
 
 
 export function SavedCard({user}:{user:string}){
