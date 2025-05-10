@@ -1,6 +1,10 @@
 import React, {useState} from "react"; 
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; 
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import "./Homepage.css";
+
+
 
 
 const teamMembers = [
@@ -32,7 +36,24 @@ const Home: React.FC = () => {
     name: "",
     email: "",
     message: "",
-  });
+  }); 
+
+  const location = useLocation();
+
+  useEffect(() => {
+    const hash = window.location.hash;
+  
+    if (hash) {
+      const section = document.querySelector(hash);
+      if (section) {
+        setTimeout(() => {
+          section.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    }
+  }, [location]);
+  
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -47,7 +68,7 @@ const Home: React.FC = () => {
 
   return (
     <div className="home-container">
-      <header className="hero">
+      <header id="hero" className="hero">
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <p className="welcome-text">Welcome to!</p>
@@ -58,7 +79,7 @@ const Home: React.FC = () => {
           </Link>     
          </div>
       </header>
-      <section className="about-section">  
+      <section id="about" className="about-section">  
       <h2 className="about-title">About Us</h2>
         <div className="about-container"> 
           <div className="about-text">
@@ -81,7 +102,7 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section> 
-      <section className="team-section">
+      <section id="team" className="team-section">
         <h2>Meet The Team</h2>
         <div className="team-grid">
           {teamMembers.map((member, index) => (
@@ -93,7 +114,7 @@ const Home: React.FC = () => {
           ))}
         </div>
       </section> 
-      <section className="contact-section">
+      <section id="contact" className="contact-section">
         <h2>Contact Us</h2>
         <form className="contact-form" onSubmit={handleSubmit}>
           <input
