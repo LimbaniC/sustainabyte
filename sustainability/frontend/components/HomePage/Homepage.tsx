@@ -16,7 +16,7 @@ const teamMembers = [
   { 
     name: "Limbani Chaponda", 
     description: "Senior Computer Science Major",
-    linkedin: ""
+    linkedin: "https://www.linkedin.com/in/limbani/"
   },
   { 
     name: "Grace Schmelzer", 
@@ -26,7 +26,7 @@ const teamMembers = [
   { 
     name: "Jacob Cohen", 
     description: "Senior Computer Science Major",
-    linkedin: ""
+    linkedin: "https://www.linkedin.com/in/jacob-cohen-tech/"
   }, 
 ];
 

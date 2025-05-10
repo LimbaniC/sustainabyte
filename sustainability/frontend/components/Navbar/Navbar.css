@@ -55,15 +55,17 @@
 .nav-item.login {
   margin-left: 20px; 
   padding-right: 20px; 
-  white-space: nowrap; 
+  white-space: nowrap;   
 }
 
 .nav-item.login a {
-  background-color: #4CAF50;
+  background-color: #4CAF50; 
+  font-size: 30px; 
   color: white !important;
   padding: 10px 20px;
   border-radius: 5px;
-  text-decoration: none;
+  text-decoration: none; 
+  font-family: "Sono", monospace;
   font-weight: bold;
   display: inline-block;
 }
