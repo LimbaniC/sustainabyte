@@ -36,26 +36,19 @@ const Home: React.FC = () => {
 
   const location = useLocation();
 
-useEffect(() => {
-  const params = new URLSearchParams(location.search);
-  const scrollTo = params.get("scrollTo");
-
-  if (scrollTo) {
-    const section = document.getElementById(scrollTo);
-    if (section) {
-      setTimeout(() => {
-        section.scrollIntoView({ behavior: "smooth" });
-      }, 100);
+  useEffect(() => {
+    const hash = window.location.hash;
+  
+    if (hash) {
+      const section = document.querySelector(hash);
+      if (section) {
+        setTimeout(() => {
+          section.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
     }
-  } else {
-    const hero = document.getElementById("hero");
-    if (hero) {
-      setTimeout(() => {
-        hero.scrollIntoView({ behavior: "smooth" });
-      }, 100);
-    }
-  }
-}, [location]); 
+  }, [location]);
+  
 
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -71,7 +64,7 @@ useEffect(() => {
 
   return (
     <div className="home-container">
-      <header className="hero">
+      <header id="hero" className="hero">
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <p className="welcome-text">Welcome to!</p>
@@ -82,7 +75,7 @@ useEffect(() => {
           </Link>     
          </div>
       </header>
-      <section className="about-section">  
+      <section id="about" className="about-section">  
       <h2 className="about-title">About Us</h2>
         <div className="about-container"> 
           <div className="about-text">
@@ -105,7 +98,7 @@ useEffect(() => {
           </div>
         </div>
       </section> 
-      <section className="team-section">
+      <section id="team" className="team-section">
         <h2>Meet The Team</h2>
         <div className="team-grid">
           {teamMembers.map((member, index) => (
@@ -116,7 +109,7 @@ useEffect(() => {
           ))}
         </div>
       </section> 
-      <section className="contact-section">
+      <section id="contact" className="contact-section">
         <h2>Contact Us</h2>
         <form className="contact-form" onSubmit={handleSubmit}>
           <input

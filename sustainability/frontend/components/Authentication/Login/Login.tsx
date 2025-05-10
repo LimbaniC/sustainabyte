@@ -2,11 +2,12 @@ import React from 'react';
 import { useState } from "react";
 import "./Login.css";
 //import { Navigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 
-const Login = () => {
+const Login = () => { 
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -45,7 +46,11 @@ const Login = () => {
           body: JSON.stringify(formData),
         });
         const text = await res.text();
-        alert(text);
+        alert(text);  
+        localStorage.setItem("username", formData.username);
+        if (res.ok) {
+          navigate("/saved");
+        }
       }
       catch (error) {
         console.log("Error connecting to the server", error)

@@ -1,4 +1,4 @@
-/* ✅ Navbar Base */
+
 .navbar {
   display: block; 
   padding: 10px 0;
@@ -20,42 +20,42 @@
   }
 }
 
-/* ✅ Navbar Logo (Left-Aligned) */
+
 .navbar-brand {
   margin-right: auto;   
   margin-top: 30px;  
 }
 
-/* ✅ Text Styling */
+
 .navbar a {  
   color: white !important;
   text-decoration: none;
-  font-size: 30px; /* Keeps larger text */
+  font-size: 30px; 
   font-weight: bold; 
   font-family: "Sono", monospace; 
   letter-spacing: 0.01rem; 
 }
 
-/* ✅ Align Menu Items Closer to Login */
+
 .menu {
   display: flex;
-  gap: 25px; /* Space between menu items */
-  margin-left: auto; /* Push menu towards the right */
-  padding-right: 30px; /* Extra padding to prevent cropping */ 
+  gap: 25px; 
+  margin-left: auto;
+  padding-right: 30px; 
   font-size: 20px;
 }
 
 .nav-item {
   display: flex;
-  align-items: center; /* Ensures vertical alignment */
+  align-items: center;
   padding-top: 10px;  
   gap: 50px; 
 }
-/* ✅ Fix for Login Cropping */
+
 .nav-item.login {
-  margin-left: 20px; /* Space between "Search" and "Login" */
-  padding-right: 20px; /* Ensures "Login" isn't cropped */
-  white-space: nowrap; /* Prevents text from breaking */
+  margin-left: 20px; 
+  padding-right: 20px; 
+  white-space: nowrap; 
 }
 
 .nav-item.login a {
@@ -68,7 +68,7 @@
   display: inline-block;
 }
 
-/* ✅ Mobile Dropdown (Hidden by Default) */
+
 @media (max-width: 800px) {
   .menu {
     display: none;
@@ -79,7 +79,7 @@
   }
 }
 
-/* ✅ Ensures Proper Display on Larger Screens */
+
 @media (min-width: 768px) {
   .menu {
     display: flex !important;
@@ -92,7 +92,7 @@
 
   .menu ul {
     display: flex;
-    gap: 20px; /* Keeps spacing consistent */
+    gap: 20px; 
     list-style: none;
   }
 

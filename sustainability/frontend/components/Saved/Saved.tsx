@@ -1,14 +1,23 @@
 import React from "react";
 import type { FoodType} from "../FoodComponent/FoodComponent.tsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Saved.css";
 
 
 
-export function Saved({foods,user}:{foods: FoodType[],user: string}){
+export function Saved({foods}:{foods: FoodType[],user: string}){
 
 
-    const [savedFoods, setSavedFoods] = useState(foods);
+    const [savedFoods, setSavedFoods] = useState(foods); 
+    const [username, setUsername] = useState("");
+
+    useEffect(() => {
+      const storedUsername = localStorage.getItem("username");
+      if (storedUsername) {
+        setUsername(storedUsername);
+      }
+    }, []);
+
 
   const removeFood = (indexToRemove: number) => {
     setSavedFoods(savedFoods.filter((_, index) => index !== indexToRemove));
@@ -16,7 +25,7 @@ export function Saved({foods,user}:{foods: FoodType[],user: string}){
     return(
 
         <div className ="saved-card">
-            <p>Hello {user} you have saved:</p>
+            <h2 className="greeting-text">Hello {username}, here is your saved food:</h2>
             <ul>
                 {savedFoods.map((food,index)=>(
                     <li key={index} className="flex"><div className="square">
