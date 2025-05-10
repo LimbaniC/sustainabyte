@@ -6,7 +6,8 @@
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     width: 300px;
     text-align: center;
-    margin: 20px auto;
+    margin: 20px auto; 
+    color: black;
 }
 
 /* List styling */
