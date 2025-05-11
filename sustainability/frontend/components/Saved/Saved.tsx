@@ -1,46 +1,51 @@
+import React from "react";
 
-import { useAppContext } from '../WrapperComponent/ContextWrapper';
-import { useEffect,useState } from 'react';
+import { useAppContext } from "../WrapperComponent/ContextWrapper.tsx";
+import { useState, useEffect } from "react";
 import "./Saved.css";
 
 
-export function SavedCard(){
 
+export function SavedCard() {
+  const { savedFoods, removeSavedFood, setSavedFoods } = useAppContext();
   const [user, setUser] = useState("");
-
-    useEffect(() => {
+  useEffect(() => {
       const storedUsername = localStorage.getItem("username");
       if (storedUsername) {
         setUser(storedUsername);
       }
     }, []);
 
-  const {savedFoods, removeSavedFood,setSavedFoods} = useAppContext()
-return(
-  <div className ="saved-card">
-            <p>Hello {user} you have saved:</p>
-            <ul>
-                {savedFoods.map((food,index)=>(
-                    <li key={index} className="flex"><div className="square">
-                    {food.imageUrl ? ( <img className='square' src={food.imageUrl} alt={food.foodName} />
-            ) : (
-              <div className="placeholder-scales square">No image</div>
-            )}
-          </div>{food.foodName}
+  return (
+    <div className="saved-card">
+      <p>Hello {user} you have saved:</p>
+      <ul>
+        {savedFoods.map((food, index) => (
+          <li key={index} className="flex">
+            <div className="square">
+              {food.imageUrl ? (
+                <img src={food.imageUrl} alt={food.foodName} />
+              ) : (
+                <div className="placeholder-scales square">No image</div>
+              )}
+            </div>
+            {food.foodName}
             <button
-            className="remove-button"
-            onClick={() => removeSavedFood(index)}
-            aria-label={`Remove ${food.foodName}`}
+              className="remove-button"
+              onClick={() => removeSavedFood(index)}
+              aria-label={`Remove ${food.foodName}`}
             >
-            ❌
-            </button></li>))
-                }
-                
-            </ul>
-          <button className='saved-button' onClick={() => setSavedFoods([])}> claim</button>
-        </div>
-)
-
+              ❌
+            </button>
+          </li>
+        ))}
+      </ul>
+      <button className="saved-button" onClick={() => setSavedFoods([])}>
+        {" "}
+        claim
+      </button>
+    </div>
+  );
 }
 
 function DonatedCard()
