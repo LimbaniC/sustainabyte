@@ -12,7 +12,7 @@ export function SavedCard() {
   useEffect(() => {
       const storedUsername = localStorage.getItem("username");
       if (storedUsername) {
-        setUsername(storedUsername);
+        setUser(storedUsername);
       }
     }, []);
 
