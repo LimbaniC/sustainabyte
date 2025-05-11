@@ -34,15 +34,6 @@ async function start() {
 
 start();
 
-// app.post('/upload', (req, res) => {
-//   const foodData = req.body;
-//   console.log('Received food donation:', foodData);
-//   res.status(200).json({ message: 'Food uploaded successfully!' });
-// });
-
-// app.listen(port, () => {
-//   console.log(`Food upload service running on port ${port}`);
-// });
  
 app.post('/upload', async (req, res) => {
     try {
@@ -57,8 +48,3 @@ app.post('/upload', async (req, res) => {
     }
   });
 
-// to test  run % docker-compose logs food-upload-service 
-
-//then curl -X POST http://localhost:5001/upload \
-//   -H "Content-Type: application/json" \
-//   -d '{"foodName":"Test","foodAmount":1,"foodCategory":"Canned","foodExpirationDate":"2025-05-05","foodDescription":"sample","foodAllergen":"none","imageUrl":""}'
