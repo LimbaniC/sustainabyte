@@ -24,7 +24,7 @@ export function SavedCard() {
           <li key={index} className="flex">
             <div className="square">
               {food.imageUrl ? (
-                <img src={food.imageUrl} alt={food.foodName} />
+                <img className="square" src={food.imageUrl} alt={food.foodName} />
               ) : (
                 <div className="placeholder-scales square">No image</div>
               )}
