@@ -37,14 +37,14 @@ Sustain-a-byte is a web and mobile application designed to bridge the gap betwee
 
 1.Clone the repository and enter the project directory:
 
-````git clone https://github.com/LimbaniC/sustainabyte.git
-cd sustainabyte/sustainability```
+`````git clone https://github.com/LimbaniC/sustainabyte.git
+cd sustainabyte/sustainability````
 
 2. Start the application with Docker Compose:
 
-```docker-compose up --build```
+````docker-compose up --build ````
 
 3.Open the app in your browser:
 
 http://localhost:5173
-````
+`````
